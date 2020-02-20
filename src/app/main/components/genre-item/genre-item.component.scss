@@ -1,0 +1,57 @@
+.genre-item {
+  position: relative;
+  height: 208px;
+  border-radius: 6px;
+  box-shadow: inset 0px 0px 16px rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  &:hover &__overlay {
+    opacity: 1;
+  }
+
+  &--comedy &__overlay {
+    background: linear-gradient(136.27deg, #F2C94C 8.44%, #F29A4A 91.36%);
+  }
+  &--drama &__overlay {
+    background: linear-gradient(136.27deg, #F2994A 8.44%, #EB5757 91.36%);
+  }
+  &--fantasy &__overlay {
+    background: linear-gradient(136.27deg, #56CCF2 8.44%, #2F80ED 91.36%);
+  }
+  &--horror &__overlay {
+    background: linear-gradient(136.27deg, #828282 8.44%, #333333 91.36%);
+  }
+
+  &__overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    transition: 0.3s opacity;
+    z-index: -1;
+  }
+
+  &__title {
+    position: absolute;
+    display: block;
+    bottom: 24px;
+    left: 0;
+    right: 0;
+    padding: 0 5px;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    line-height: 24px;
+    max-height: 48px;
+    overflow: hidden;
+  }
+  &__img {
+    width: 48px;
+    height: 48px;
+  }
+}

@@ -1,0 +1,13 @@
+<div class="tabs">
+  <ul class="tabs__list">
+    <app-tab
+      *ngFor="let tab of tabList"
+      (click)="onTabClick(tab)"
+      [name]="tab.name"
+      [isActive]="isSelected(tab)"
+    ></app-tab>
+  </ul>
+</div>
+<div>
+  <ng-template [ngTemplateOutlet]="currentTab.templateRef"></ng-template>
+</div>

@@ -1,0 +1,28 @@
+.checkbox {
+  display: flex;
+  align-items: center;
+  &__input {
+    display: none;
+    & ~ .checkbox__value--n {
+      display: block;
+    }
+    & ~ .checkbox__value--y {
+      display: none;
+    }
+    &:checked ~ .checkbox__value--y {
+      display: block;
+    }
+    &:checked ~ .checkbox__value--n {
+      display: none;
+    }
+  }
+  &__value {
+    width: 16px;
+    height: 16px;
+  }
+  &__label {
+    margin-left: 8px;
+    font-size: 16px;
+    line-height: 19px;
+  }
+}

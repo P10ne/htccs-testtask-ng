@@ -1,0 +1,10 @@
+<button
+  class="btn"
+  [ngClass]="{
+    'btn--fill': isFill,
+    'btn--text': isText
+  }"
+  (click)="click($event)"
+>
+  {{text}}
+</button>

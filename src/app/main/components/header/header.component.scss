@@ -1,0 +1,12 @@
+.header {
+  display: flex;
+
+  &__col {
+    flex: 1 1;
+  }
+
+  &__auth {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

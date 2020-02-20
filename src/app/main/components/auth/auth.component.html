@@ -1,0 +1,12 @@
+<div class="auth">
+  <div *ngIf="!isLoggedIn; else loggedIn" class="auth__content">
+    <app-btn [text]="'Войти'"></app-btn>
+  </div>
+</div>
+
+<ng-template #loggedIn>
+  <div class="auth__content">
+    <span class="auth__login">{{login}}</span>
+    <app-btn [text]="'Выйти'" [type]="'text'"></app-btn>
+  </div>
+</ng-template>

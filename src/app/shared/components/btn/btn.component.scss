@@ -1,0 +1,32 @@
+@import "~src/variables";
+
+.btn {
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  &[disabled] {
+    cursor: default;
+    opacity: 0.5;
+  }
+  &--fill {
+    color: #fff;
+    background-color: $main-color;
+    padding: 0.6em 2em;
+    &:hover:not([disabled]) {
+      background-color: $main-color-hover;
+    }
+  }
+  &--text {
+    background: transparent;
+    color: $main-color;
+    &:hover {
+      color: $main-color-hover;
+    }
+  }
+  &:focus {
+    outline: none;
+  }
+}

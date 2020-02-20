@@ -1,0 +1,15 @@
+<span class="checkbox">
+  <input
+    type="checkbox"
+    id="check"
+    class="checkbox__input"
+    (change)="change($event)"
+  >
+  <svg class="checkbox__value checkbox__value--y">
+    <use xlink:href="#checkbox_checked"></use>
+  </svg>
+  <svg class="checkbox__value checkbox__value--n">
+    <use xlink:href="#checkbox_unchecked"></use>
+  </svg>
+  <label for="check" class="checkbox__label">{{labelText}}</label>
+</span>

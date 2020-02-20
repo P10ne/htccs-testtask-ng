@@ -1,0 +1,13 @@
+<div class="channel-item">
+  <div class="channel-item__logo">
+    <img src="#" class="channel-item__logo-img" />
+  </div>
+  <div class="channel-item__program">
+    <p class="channel-item__title">{{'content'}}</p>
+
+    <p class="channel-item__tv-show" *ngFor="let tvShow of channel.tvShow">
+      <span class="tv-show__time">{{tvShow.time}}</span>
+      <span class="tv-show__name">{{tvShow.name}}</span>
+    </p>
+  </div>
+</div>

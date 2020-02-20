@@ -1,0 +1,43 @@
+<div class="tabs-container">
+  <app-tabs>
+    <app-tab [name]="'Фильмы'" [templateRef]="firstRef"></app-tab>
+    <app-tab [name]="'Телеканалы'" [templateRef]="secondRef"></app-tab>
+  </app-tabs>
+</div>
+
+
+
+<ng-template #firstRef>
+  <div class="main-section">
+    <div class="main-section__title">
+      <h3 class="main-title">Новинки</h3>
+    </div>
+    <div class="main-section__content main-section__content--wp">
+      <div class="main-section__movie" *ngFor="let film of films">
+        <app-movie-item [movie]="film"></app-movie-item>
+      </div>
+    </div>
+  </div>
+  <div class="main-section">
+    <div class="main-section__title">
+      <h3 class="main-title">Жанры</h3>
+    </div>
+    <div class="main-section__content main-section__content--wp">
+      <div class="main-section__genre" *ngFor="let genre of genres">
+        <app-genre-item [genre]="genre"></app-genre-item>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #secondRef>
+  <div class="main-section">
+    <div class="main-section__content">
+      <div class="main-channels">
+        <div class="main-channels__item" *ngFor="let channel of channels">
+          <app-channel-item [channel]="channel"></app-channel-item>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
