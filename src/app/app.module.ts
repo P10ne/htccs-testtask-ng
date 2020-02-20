@@ -17,6 +17,7 @@ import { TabsComponent } from './main/components/tabs/tabs.component';
 import { MovieInfoComponent } from './main/pages/movie-info/movie-info.component';
 import { GenreItemComponent } from './main/components/genre-item/genre-item.component';
 import { ChannelItemComponent } from './main/components/channel-item/channel-item.component';
+import { LoginFormComponent } from './main/components/login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ChannelItemComponent } from './main/components/channel-item/channel-ite
     TabsComponent,
     MovieInfoComponent,
     GenreItemComponent,
-    ChannelItemComponent
+    ChannelItemComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
