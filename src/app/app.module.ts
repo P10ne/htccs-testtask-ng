@@ -17,7 +17,7 @@ import { TabsComponent } from './main/components/tabs/tabs.component';
 import { MovieInfoComponent } from './main/pages/movie-info/movie-info.component';
 import { GenreItemComponent } from './main/components/genre-item/genre-item.component';
 import { ChannelItemComponent } from './main/components/channel-item/channel-item.component';
-import { LoginFormComponent } from './main/components/login-form/login-form.component';
+import {LoginFormComponent} from './main/components/login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +43,7 @@ import { LoginFormComponent } from './main/components/login-form/login-form.comp
     SharedModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [LoginFormComponent]
 })
 export class AppModule { }

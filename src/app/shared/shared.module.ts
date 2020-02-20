@@ -6,6 +6,7 @@ import { InputComponent } from './components/input/input.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { SearchComponent } from './components/search/search.component';
 import {ModalComponent} from './components/modal/modal.component';
+import { InsertionDirective } from './directives/insertion.directive';
 import {LoginFormComponent} from '../main/components/login-form/login-form.component';
 
 
@@ -17,7 +18,8 @@ import {LoginFormComponent} from '../main/components/login-form/login-form.compo
     InputComponent,
     LogoComponent,
     SearchComponent,
-    ModalComponent
+    ModalComponent,
+    InsertionDirective
   ],
   exports: [
     BtnComponent,
@@ -27,6 +29,7 @@ import {LoginFormComponent} from '../main/components/login-form/login-form.compo
     SearchComponent,
     ModalComponent
   ],
+  entryComponents: [ModalComponent],
   imports: [
     CommonModule
   ]

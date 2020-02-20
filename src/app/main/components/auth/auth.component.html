@@ -1,6 +1,6 @@
 <div class="auth">
   <div *ngIf="!isLoggedIn; else loggedIn" class="auth__content">
-    <app-btn [text]="'Войти'"></app-btn>
+    <app-btn [text]="'Войти'" (click)="openLogin($event)"></app-btn>
   </div>
 </div>
 

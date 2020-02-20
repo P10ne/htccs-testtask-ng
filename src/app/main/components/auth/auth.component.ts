@@ -1,4 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {ModalService} from '../../../shared/services/modal.service';
+import {LoginFormComponent} from '../login-form/login-form.component';
 
 @Component({
   selector: 'app-auth',
@@ -11,9 +13,13 @@ export class AuthComponent implements OnInit {
   get isLoggedIn() {
     return !!this.login && this.login.length > 0;
   }
-  constructor() { }
+  constructor(private modalService: ModalService) { }
 
   ngOnInit() {
+  }
+
+  openLogin(event: Event) {
+    this.modalService.open(LoginFormComponent);
   }
 
 }

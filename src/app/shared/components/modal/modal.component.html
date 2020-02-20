@@ -1,3 +1,5 @@
-<div class="modal-overlay">
-  <app-login-form></app-login-form>
+<div class="modal-overlay" (click)="onOverlayClicked()">
+  <div class="modal-content" (click)="onDialogClicked($event)">
+    <ng-template appInsertion> </ng-template>
+  </div>
 </div>
