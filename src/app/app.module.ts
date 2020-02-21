@@ -24,29 +24,15 @@ import {MainModule} from './main/main.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    AuthComponent,
-    FooterComponent,
-    MovieItemComponent,
-    TabComponent,
-    TabsComponent,
-    MovieInfoComponent,
-    GenreItemComponent,
-    ChannelItemComponent,
-    LoginFormComponent,
-    AddCommentComponent,
-    CommentComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule,
     AdminModule,
     MainModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
-  entryComponents: [LoginFormComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,11 @@
+<div class="movie-edit">
+  <h4 class="movie-edit__title">{{movie.title}}</h4>
+  <div class="movie-edit__controls">
+    <div class="movie-edit__control">
+      <app-btn [text]="'Редактировать'" [type]="'text'" (click)="onEdit($event)"></app-btn>
+    </div>
+    <div class="movie-edit__control">
+      <app-btn [text]="'Удалить'" [type]="'text'" (click)="onDelete($event)"></app-btn>
+    </div>
+  </div>
+</div>

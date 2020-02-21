@@ -1,1 +1,23 @@
-<p>admin works!</p>
+<app-tabs>
+  <app-tab [name]="'Фильмы'" [templateRef]="firstRef"></app-tab>
+  <app-tab [name]="'Пользователи'" [templateRef]="secondRef"></app-tab>
+</app-tabs>
+
+<ng-template #firstRef>
+  <div class="admin-tab-section">
+    <div class="search-container">
+      <app-search></app-search>
+    </div>
+    <div class="movie-edit-container" *ngFor="let movie of movies">
+      <app-movie-edit [movie]="movie"></app-movie-edit>
+    </div>
+
+  </div>
+
+</ng-template>
+
+<ng-template #secondRef>
+  <div class="admin-tab-section">
+    <p>Пользователи</p>
+  </div>
+</ng-template>
