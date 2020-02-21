@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {MoviesService} from '../../../shared/services/movies/movies.service';
+import {IMovie} from '../../../shared/interfaces/movie.interface';
 
 @Component({
   selector: 'app-main',
@@ -6,34 +8,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-
-  films = [
-    {
-      "id": 1,
-      "title": "Мульт в кино. Выпуск №103. Некогда грустить!",
-      "imgSrc": "https://i.ibb.co/8XCZLVQ/picture.png",
-      "description": "Описание фильма Мульт в кино. Выпуск №103. Некогда грустить!"
-    },
-    {
-      "id": 2,
-      "title": "Новый Бэтмен",
-      "imgSrc": "https://i.ibb.co/ydbBj52/picture-2.png",
-      "description": "Описание фильма Новый Бэтмен"
-    },
-    {
-      "id": 3,
-      "title": "Однажды... в Голливуде",
-      "imgSrc": "https://i.ibb.co/HgHHH8f/picture-3.png",
-      "description": "Фильм повествует о череде событий, произошедших в Голливуде в 1969 году, на закате его «золотого века». Известный актер Рик Далтон и его дублер Клифф Бут пытаются найти свое место в стремительно меняющемся мире киноиндустрии."
-    },
-    {
-      "id": 4,
-      "title": "Стриптизёрши",
-      "imgSrc": "https://i.ibb.co/XFt7Xw8/picture-4.png",
-      "description": "Описание фильма Стриптизёрши"
-    }
-  ];
-
   genres = [
     {
       "title": "Комедии",
@@ -134,9 +108,16 @@ export class MainComponent implements OnInit {
       ]
     }
   ];
-  constructor() { }
+
+  movies: IMovie[];
+  constructor(private moviesService: MoviesService) { }
 
   ngOnInit() {
+    this.initMovies();
   }
 
+  async initMovies() {
+    const movies = await this.moviesService.getMovies();
+    this.movies = movies;
+  }
 }

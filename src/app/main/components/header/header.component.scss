@@ -5,6 +5,10 @@
     flex: 1 1;
   }
 
+  &__logo {
+    display: flex;
+  }
+
   &__auth {
     display: flex;
     justify-content: flex-end;

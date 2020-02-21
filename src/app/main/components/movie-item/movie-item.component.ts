@@ -1,11 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-
-export interface IMovieItem {
-  id: number;
-  title: string;
-  imgSrc: string;
-  description: string;
-}
+import {IMovie} from '../../../shared/interfaces/movie.interface';
 
 @Component({
   selector: 'app-movie-item',
@@ -14,7 +8,7 @@ export interface IMovieItem {
 })
 export class MovieItemComponent implements OnInit {
 
-  @Input() movie: IMovieItem;
+  @Input() movie: IMovie;
 
   constructor() { }
 

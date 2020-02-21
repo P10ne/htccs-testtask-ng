@@ -11,14 +11,10 @@ const routes: Routes = [
   {path: '', component: MainLayoutComponent, children: [
       {path: '', redirectTo: '/', pathMatch: 'full'},
       {path: '', component: MainComponent},
-      {path: 'movie', component: MovieInfoComponent}
+      {path: 'movie/:id', component: MovieInfoComponent}
     ]
   },
-  {path: '', component: AdminLayoutComponent, children: [
-      {path: '', redirectTo: '/', pathMatch: 'full'},
-      {path: '', component: AdminComponent}
-    ]
-  }
+  {path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)}
 ];
 
 @NgModule({

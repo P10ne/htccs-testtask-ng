@@ -1,6 +1,5 @@
-<a href="#"
-   class='genre-item'>
+<a href="#" [class]="'genre-item' + ' genre-item--' + genre.clMod" >
   <div class="genre-item__overlay"></div>
   <img [src]="genre.imgSrc" class="genre-item__img" />
-  <span class="genre-item__title">{{genre.title}</span>
+  <span class="genre-item__title">{{genre.title}}</span>
 </a>

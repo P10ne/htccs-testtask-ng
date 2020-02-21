@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {Location} from '@angular/common';
+import {IMovie} from '../../../shared/interfaces/movie.interface';
+import {MoviesService} from '../../../shared/services/movies/movies.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-movie-info',
@@ -7,9 +11,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MovieInfoComponent implements OnInit {
 
-  constructor() { }
+  movieId: number;
+  movie: IMovie;
+  constructor(
+    private locationService: Location,
+    private moviesService: MoviesService,
+    private activatedRoute: ActivatedRoute
+    )
+  {
+    this.activatedRoute.params.subscribe(params => {
+      this.movieId = params.id;
+    });
+  }
 
   ngOnInit() {
+    this.initMovie();
+  }
+
+  async initMovie() {
+    const movie = await this.moviesService.getMovie(this.movieId);
+    this.movie = movie;
+  }
+
+  goBack() {
+    this.locationService.back();
   }
 
 }

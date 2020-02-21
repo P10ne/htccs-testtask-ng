@@ -1,5 +1,5 @@
 <div class="movie-item">
-  <a class="movie-item__link">
+  <a class="movie-item__link" [routerLink]="['/movie', movie.id]">
   <div class="movie-item__container">
     <div class="movie-item__bg">
       <img [src]="movie.imgSrc" class="movie-item__img"/>

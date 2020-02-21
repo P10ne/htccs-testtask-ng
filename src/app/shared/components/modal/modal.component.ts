@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import {Subject} from 'rxjs';
 import {InsertionDirective} from '../../directives/insertion.directive';
-import {ModalService} from '../../services/modal.service';
+import {ModalService} from '../../services/modal/modal.service';
 
 @Component({
   selector: 'app-modal',

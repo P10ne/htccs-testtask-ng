@@ -1,1 +1,44 @@
-<p>movie-info works!</p>
+<section class="main-section movie-info__section--movie">
+  <svg class="movie-info__back-svg" (click)="goBack()">
+    <use xlink:href="#back"></use>
+  </svg>
+  <div class="movie-info__space-info movie-info__space-info--left"></div>
+    <div class="movie-info">
+      <div class="movie-info__img-container">
+        <div class="movie-info__bg">
+          <img [src]="movie.imgSrc" class="movie-info__img" >
+        </div>
+      </div>
+      <div class="movie-info__info">
+        <table class="movie-info__info-table">
+          <tbody>
+          <tr>
+            <td class="movie-info__info-table-param">Название:</td><td class="movie-info__info-table-value movie-info__info-title">{{movie.title}}</td>
+          </tr>
+          <tr>
+            <td class="movie-info__info-table-param">Страна:</td><td  class="movie-info__info-table-value">{{movie.country}}</td>
+          </tr>
+          <tr>
+            <td class="movie-info__info-table-param">Жанр:</td><td class="movie-info__info-table-value">{{movie.genre}}</td>
+          </tr>
+          </tbody>
+        </table>
+        <p class="movie-info__info-description">{{movie.description}}</p>
+      </div>
+    </div>
+  <div class="movie-info__space-info"></div>
+</section>
+<section class="main-section movie-info__section--comments">
+  <h3 class="movie-info__comments-title">Комментарии</h3>
+  <div class="movie-info__comments-add">
+    <app-add-comment></app-add-comment>
+  </div>
+  <div class="movie-info__comments-view">
+<!--component-->
+    <div class="movie-info__comment-item">
+      <app-comment></app-comment>
+    </div>
+<!--    -->
+  </div>
+
+</section>

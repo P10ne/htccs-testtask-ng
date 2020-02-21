@@ -1,0 +1,31 @@
+.comment-view {
+  position: relative;
+  width: 100%;
+  padding: 16px;
+  background: #f2f2f2;
+  border-radius: 8px;
+  &__login {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  &__remove {
+    position: absolute;
+    top: 0;
+    right: calc(-15px - 15px);
+    cursor: pointer;
+    &:hover &-svg {
+      fill: #CC221B;
+    }
+    &-svg {
+      width: 16px;
+      height: 16px;
+      fill: #E5261E;
+    }
+
+    @media(max-width: 1280px) {
+      top: 5px;
+      right: 5px;
+    }
+  }
+}
