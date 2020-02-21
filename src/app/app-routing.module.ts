@@ -8,12 +8,7 @@ import {MovieInfoComponent} from './main/pages/movie-info/movie-info.component';
 
 
 const routes: Routes = [
-  {path: '', component: MainLayoutComponent, children: [
-      {path: '', redirectTo: '/', pathMatch: 'full'},
-      {path: '', component: MainComponent},
-      {path: 'movie/:id', component: MovieInfoComponent}
-    ]
-  },
+  {path: '', loadChildren: () => import('./main/main.module').then(m => m.MainModule)},
   {path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)}
 ];
 

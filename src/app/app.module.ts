@@ -19,14 +19,12 @@ import { ChannelItemComponent } from './main/components/channel-item/channel-ite
 import {LoginFormComponent} from './main/components/login-form/login-form.component';
 import { AddCommentComponent } from './main/components/add-comment/add-comment.component';
 import { CommentComponent } from './main/components/comment/comment.component';
-import {AdminComponent} from './admin/pages/admin/admin.component';
 import {AdminModule} from './admin/admin.module';
+import {MainModule} from './main/main.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainLayoutComponent,
-    MainComponent,
     HeaderComponent,
     AuthComponent,
     FooterComponent,
@@ -44,7 +42,8 @@ import {AdminModule} from './admin/admin.module';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    AdminModule
+    AdminModule,
+    MainModule
   ],
   providers: [],
   bootstrap: [AppComponent],
