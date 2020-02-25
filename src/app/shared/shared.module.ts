@@ -10,8 +10,13 @@ import {TabComponent} from '../main/components/tab/tab.component';
 import {TabsComponent} from '../main/components/tabs/tabs.component';
 import {SearchComponent} from './components/search/search.component';
 import {LoginFormComponent} from '../main/components/login-form/login-form.component';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
-
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true
+};
 
 @NgModule({
   declarations: [
@@ -35,11 +40,22 @@ import {LoginFormComponent} from '../main/components/login-form/login-form.compo
     TabComponent,
     TabsComponent,
     SearchComponent,
+    LoginFormComponent,
+    PerfectScrollbarModule
+  ],
+  entryComponents: [
+    ModalComponent,
     LoginFormComponent
   ],
-  entryComponents: [ModalComponent, LoginFormComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    PerfectScrollbarModule
+  ],
+  providers: [
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    }
   ]
 })
 export class SharedModule { }

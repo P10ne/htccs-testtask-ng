@@ -1,3 +1,13 @@
-<div class="movie-edit-form">
-  <p>movie edit form work</p>
+<div class="modal movie-edit-form">
+  <div class="modal__body">
+    <app-input [placeholder]="'Название'"></app-input>
+    <app-input [placeholder]="'Год'"></app-input>
+    <app-input [placeholder]="'Страна'"></app-input>
+    <app-input [placeholder]="'Жанр'"></app-input>
+    <textarea (resize)="false"></textarea>
+  </div>
+  <div class="modal__controls">
+    <app-btn class="modal__control modal__control--submit" text="Сохранить"></app-btn>
+    <app-btn class="modal__control modal__control--cancel" [type]="'text'" text="Отмена"></app-btn>
+  </div>
 </div>

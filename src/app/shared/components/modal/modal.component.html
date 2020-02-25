@@ -1,5 +1,9 @@
 <div class="modal-overlay" (click)="onOverlayClicked()">
   <div class="modal-content" (click)="onDialogClicked($event)">
-    <ng-template appInsertion> </ng-template>
+    <div class="modal__header" *ngIf="title">
+      <span class="modal__title">{{title}}</span>
+    </div>
+    <ng-template appInsertion></ng-template>
+
   </div>
 </div>

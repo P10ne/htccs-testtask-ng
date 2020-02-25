@@ -1,4 +1,5 @@
 @import 'variables.scss';
+@import '~perfect-scrollbar/css/perfect-scrollbar.css';
 
 * {
   padding: 0;
@@ -37,4 +38,19 @@ app-comment {
 }
 .header-container {
   padding: 32px 0;
+}
+.modal__controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  overflow: auto;
+}
+.modal__control {
+  margin: 0 5px;
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &--submit {}
+  &--cancel {}
 }

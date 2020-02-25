@@ -19,6 +19,7 @@ import {ModalService} from '../../services/modal/modal.service';
   styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent implements AfterViewInit, OnDestroy {
+  title = '';
   private readonly _onClose = new Subject<any>();
 
   public componentRef: ComponentRef<any>;
@@ -40,7 +41,6 @@ export class ModalComponent implements AfterViewInit, OnDestroy {
   }
 
   onOverlayClicked() {
-    // close the dialog
     this.modalService.close();
   }
 

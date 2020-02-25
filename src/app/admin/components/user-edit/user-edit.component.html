@@ -1,0 +1,11 @@
+<div class="user-edit">
+  <h4 class="user-edit__title">{{user.login}}</h4>
+  <div class="user-edit__controls">
+    <div class="user-edit__control">
+      <app-btn [text]="'Редактировать'" [type]="'text'" (click)="onEdit($event)"></app-btn>
+    </div>
+    <div class="user-edit__control">
+      <app-btn [text]="'Удалить'" [type]="'text'" (click)="onDelete($event)"></app-btn>
+    </div>
+  </div>
+</div>

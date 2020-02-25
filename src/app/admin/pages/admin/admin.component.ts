@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {IMovie} from '../../../shared/interfaces/movie.interface';
+import {IUser, Role} from '../../../shared/interfaces/user.interface';
 
 @Component({
   selector: 'app-admin',
@@ -26,6 +27,19 @@ export class AdminComponent implements OnInit {
       title: 'название',
       imgSrc: '#',
       year: 2000
+    }
+  ];
+
+  users: IUser[] = [
+    {
+      id: 1,
+      login: 'admin',
+      role: Role.admin
+    },
+    {
+      id: 2,
+      login: 'user',
+      role: Role.user
     }
   ];
 

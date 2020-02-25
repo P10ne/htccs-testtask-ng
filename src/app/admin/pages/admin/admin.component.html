@@ -8,8 +8,8 @@
     <div class="search-container">
       <app-search></app-search>
     </div>
-    <div class="movie-edit-container" *ngFor="let movie of movies">
-      <app-movie-edit [movie]="movie"></app-movie-edit>
+    <div class="admin-tab__content">
+      <app-movies [movies]="movies"></app-movies>
     </div>
 
   </div>
@@ -18,6 +18,12 @@
 
 <ng-template #secondRef>
   <div class="admin-tab-section">
-    <p>Пользователи</p>
+    <div class="search-container">
+      <app-search></app-search>
+    </div>
+    <div class="admin-tab__content">
+      <app-users [users]="users"></app-users>
+    </div>
+
   </div>
 </ng-template>

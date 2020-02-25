@@ -1,0 +1,22 @@
+.user-edit {
+  width: 100%;
+  padding: 10px 15px;
+  background-color: #eee;
+  border-radius: 8px;
+
+
+  &__title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  &__control {
+    margin: 0 10px;
+  }
+}

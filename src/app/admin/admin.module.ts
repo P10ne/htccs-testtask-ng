@@ -8,6 +8,10 @@ import { MovieEditComponent } from './components/movie-edit/movie-edit.component
 import { MovieEditFormComponent } from './components/movie-edit-form/movie-edit-form.component';
 import { LoginComponent } from './pages/login/login.component';
 import {AuthGuard} from './guards/auth.guard';
+import { MoviesComponent } from './pages/movies/movies.component';
+import { UsersComponent } from './pages/users/users.component';
+import { UserEditComponent } from './components/user-edit/user-edit.component';
+import { UserEditFormComponent } from './components/user-edit-form/user-edit-form.component';
 
 const routes = [
   {
@@ -28,13 +32,20 @@ const routes = [
     AdminLayoutComponent,
     MovieEditComponent,
     MovieEditFormComponent,
-    LoginComponent
+    LoginComponent,
+    MoviesComponent,
+    UsersComponent,
+    UserEditComponent,
+    UserEditFormComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     RouterModule.forChild(routes)
   ],
-  entryComponents: [MovieEditFormComponent]
+  entryComponents: [
+    MovieEditFormComponent,
+    UserEditFormComponent
+  ]
 })
 export class AdminModule { }

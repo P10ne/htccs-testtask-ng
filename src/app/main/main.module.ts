@@ -18,7 +18,8 @@ import {SearchComponent} from '../shared/components/search/search.component';
 
 const routes = [
   {path: '', component: MainLayoutComponent, children: [
-      {path: '', component: MainComponent}
+      {path: '', component: MainComponent},
+      {path: 'movie/:id', component: MovieInfoComponent}
     ]
   }
 ];
