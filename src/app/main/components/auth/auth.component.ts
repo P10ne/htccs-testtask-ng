@@ -19,7 +19,7 @@ export class AuthComponent implements OnInit {
   }
 
   openLogin(event: Event) {
-    this.modalService.open(LoginFormComponent);
+    this.modalService.open(LoginFormComponent, {});
   }
 
 }

@@ -30,9 +30,7 @@ export class CheckboxComponent implements OnInit, ControlValueAccessor {
 
   constructor() { }
 
-  ngOnInit() {
-    this.checked = this.defaultChecked;
-  }
+  ngOnInit() {}
 
   registerOnChange(fn: any): void {
     console.log('registerOnChange', fn);

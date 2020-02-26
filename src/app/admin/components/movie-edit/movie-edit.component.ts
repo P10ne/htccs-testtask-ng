@@ -17,7 +17,10 @@ export class MovieEditComponent implements OnInit {
   }
 
   onEdit(event: Event) {
-    this.modalService.open(MovieEditFormComponent);
+    const ref = this.modalService.open(MovieEditFormComponent, {data: {message: 'success open'}});
+    ref.afterClosed.subscribe(result => {
+      console.log('Dialog closed', result);
+    });
   }
 
   onDelete(event: Event) {}

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {maxLength, minLength} from '../input/input.component';
 
 @Component({
   selector: 'app-login-form',

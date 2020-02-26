@@ -46,7 +46,6 @@ export class InputComponent implements OnInit, ControlValueAccessor  {
 
   writeValue(obj: string): void {
     this.value = obj;
-    console.log(this.value);
   }
 
 //  todo fw 500 for placeholder and bold for text
