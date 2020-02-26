@@ -12,6 +12,7 @@ import { MoviesComponent } from './pages/movies/movies.component';
 import { UsersComponent } from './pages/users/users.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { UserEditFormComponent } from './components/user-edit-form/user-edit-form.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 const routes = [
   {
@@ -41,7 +42,8 @@ const routes = [
   imports: [
     CommonModule,
     SharedModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ReactiveFormsModule
   ],
   entryComponents: [
     MovieEditFormComponent,

@@ -1,13 +1,27 @@
-<div class="modal movie-edit-form">
+<form class="modal movie-edit-form" novalidate [formGroup]="formGroup">
   <div class="modal__body">
-    <app-input [placeholder]="'Название'"></app-input>
-    <app-input [placeholder]="'Год'"></app-input>
-    <app-input [placeholder]="'Страна'"></app-input>
-    <app-input [placeholder]="'Жанр'"></app-input>
-    <textarea (resize)="false"></textarea>
+    <app-input
+      [placeholder]="'Название'"
+      formControlName="title"
+    ></app-input>
+    <app-input
+      [placeholder]="'Год'"
+      formControlName="year"
+    ></app-input>
+    <app-input
+      [placeholder]="'Страна'"
+      formControlName="country"
+    ></app-input>
+    <app-input
+      [placeholder]="'Жанр'"
+      formControlName="genre"
+    ></app-input>
+    <textarea
+      formControlName="description"
+    ></textarea>
   </div>
   <div class="modal__controls">
-    <app-btn class="modal__control modal__control--submit" text="Сохранить"></app-btn>
+    <app-btn class="modal__control modal__control--submit" text="Сохранить" (click)=""></app-btn>
     <app-btn class="modal__control modal__control--cancel" [type]="'text'" text="Отмена"></app-btn>
   </div>
-</div>
+</form>
