@@ -8,7 +8,7 @@ import {ModalRef} from '../../classes/modal-ref';
   providedIn: 'root'
 })
 export class ModalService {
-  modalComponentRef: ComponentRef<ModalComponent>;
+  modalComponentRef: ComponentRef<ModalComponent>[] = [];
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
@@ -19,14 +19,17 @@ export class ModalService {
   public open(componentType: Type<any>, config: ModalConfig) {
     const modalRef = this.appendModalComponentToBody(config);
 
-    this.modalComponentRef.instance.childComponentType = componentType;
+    this.modalComponentRef[this.modalComponentRef.length - 1].instance.childComponentType = componentType;
 
     return modalRef;
-
   }
 
-  public close() {
-    this.removeModalComponentFromBody();
+  public close(component?: ComponentRef<ModalComponent>) {
+    const modalToClose = component
+      ? this.modalComponentRef.find(c => c === component)
+      : this.modalComponentRef[this.modalComponentRef.length - 1];
+    this.removeModalComponentFromBody(modalToClose);
+    this.modalComponentRef = this.modalComponentRef.filter(c => c !== modalToClose);
   }
 
   appendModalComponentToBody(config: ModalConfig) {
@@ -37,8 +40,8 @@ export class ModalService {
     map.set(ModalRef, modalRef);
 
     const sub = modalRef.afterClosed.subscribe(() => {
-      // close the dialog
-      this.removeModalComponentFromBody();
+      console.log('sub after closed');
+      this.removeModalComponentFromBody(modalRef.component);
       sub.unsubscribe();
     });
 
@@ -49,17 +52,20 @@ export class ModalService {
     const domElem = (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
     document.body.appendChild(domElem);
 
-    this.modalComponentRef = componentRef;
 
-    this.modalComponentRef.instance.onClose.subscribe(() => {
-      this.removeModalComponentFromBody();
-    });
+    componentRef.instance.title = config.title;
+
+
+
+    modalRef.component = componentRef;
+
+    this.modalComponentRef.push(componentRef);
 
     return modalRef;
   }
 
-  private removeModalComponentFromBody() {
-    this.appRef.detachView(this.modalComponentRef.hostView);
-    this.modalComponentRef.destroy();
+  private removeModalComponentFromBody(component: ComponentRef<ModalComponent>) {
+    this.appRef.detachView(component.hostView);
+    component.destroy();
   }
 }

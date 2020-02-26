@@ -18,7 +18,7 @@ export class UserEditComponent implements OnInit {
   }
 
   onEdit(event: Event) {
-    this.modalService.open(UserEditFormComponent, {});
+    this.modalService.open(UserEditFormComponent, {data: this.user, title: 'Редактировать пользователя'});
   }
 
   onDelete(event: Event) {}

@@ -20,11 +20,9 @@ import {ModalService} from '../../services/modal/modal.service';
 })
 export class ModalComponent implements AfterViewInit, OnDestroy {
   title = '';
-  private readonly _onClose = new Subject<any>();
 
   public componentRef: ComponentRef<any>;
   public childComponentType: Type<any>;
-  public onClose = this._onClose.asObservable();
 
   @ViewChild(InsertionDirective, {static: false})
   insertionPoint: InsertionDirective;
