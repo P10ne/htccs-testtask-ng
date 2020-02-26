@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ModalService} from '../../../shared/services/modal/modal.service';
-import {LoginFormComponent} from '../login-form/login-form.component';
+import {LoginFormComponent} from '../../../shared/components/login-form/login-form.component';
 
 @Component({
   selector: 'app-auth',

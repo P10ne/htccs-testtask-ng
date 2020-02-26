@@ -1,1 +1,6 @@
-<input class="input" [placeholder]="placeholder" (change)="change($event)"/>
+<input
+  class="input"
+  [disabled]="disabled"
+  [placeholder]="placeholder"
+  [type]="type"
+  [(ngModel)]="value" />

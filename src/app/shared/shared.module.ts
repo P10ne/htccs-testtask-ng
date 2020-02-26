@@ -9,10 +9,11 @@ import {LogoComponent} from './components/logo/logo.component';
 import {TabComponent} from '../main/components/tab/tab.component';
 import {TabsComponent} from '../main/components/tabs/tabs.component';
 import {SearchComponent} from './components/search/search.component';
-import {LoginFormComponent} from '../main/components/login-form/login-form.component';
+import {LoginFormComponent} from './components/login-form/login-form.component';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -49,7 +50,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   ],
   imports: [
     CommonModule,
-    PerfectScrollbarModule
+    PerfectScrollbarModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     {

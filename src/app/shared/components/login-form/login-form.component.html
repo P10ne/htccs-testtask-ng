@@ -1,0 +1,30 @@
+<form class="login-form" [formGroup]="formGroup" novalidate (ngSubmit)="submit()">
+  <div class="login-form__content">
+    <h2 class="login-form__title">Вход</h2>
+    <div class="login-form__row">
+      <app-input
+        [placeholder]="'Логин'"
+        formControlName="login"
+        [type]="'text'">
+      </app-input>
+    </div>
+    <div class="login-form__row">
+      <app-input
+        [placeholder]="'Пароль'"
+        formControlName="password"
+        [type]="'password'">
+      </app-input>
+    </div>
+    <div class="login-form__row">
+      <app-checkbox
+        [labelText]="'Запомнить'"
+        formControlName="remember"
+      ></app-checkbox>
+    </div>
+  </div>
+  <div class="login-form__submit-container">
+    <app-btn
+      text="Войти"
+    ></app-btn>
+  </div>
+</form>

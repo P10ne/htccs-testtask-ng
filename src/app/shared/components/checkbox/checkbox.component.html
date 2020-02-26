@@ -1,9 +1,9 @@
-<span class="checkbox">
+<span class="checkbox" (click)="click()">
   <input
     type="checkbox"
-    id="check"
+    [id]="id"
     class="checkbox__input"
-    (change)="change($event)"
+    [(ngModel)]="checked"
   >
   <svg class="checkbox__value checkbox__value--y">
     <use xlink:href="#checkbox_checked"></use>
@@ -11,5 +11,5 @@
   <svg class="checkbox__value checkbox__value--n">
     <use xlink:href="#checkbox_unchecked"></use>
   </svg>
-  <label for="check" class="checkbox__label">{{labelText}}</label>
+  <label class="checkbox__label">{{labelText}}</label>
 </span>
