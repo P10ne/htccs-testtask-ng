@@ -11,12 +11,12 @@
       formControlName="password"
     ></app-input>
     <select formControlName="role">
-      <option [ngValue]="0">Администратор</option>
-      <option [ngValue]="1">Пользователь</option>
+      <option [ngValue]="1">Администратор</option>
+      <option [ngValue]="2">Пользователь</option>
     </select>
   </div>
   <div class="modal__controls">
-    <app-btn class="modal__control modal__control--submit" text="Сохранить" (click)="show()"></app-btn>
+    <app-btn class="modal__control modal__control--submit" text="Сохранить" (click)="onSave()"></app-btn>
     <app-btn class="modal__control modal__control--cancel" [type]="'text'" text="Отмена" (click)="onClose()"></app-btn>
   </div>
 </form>

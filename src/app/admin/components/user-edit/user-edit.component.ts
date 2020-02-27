@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {IUser} from '../../../shared/interfaces/user.interface';
 import {ModalService} from '../../../shared/services/modal/modal.service';
 import {UserEditFormComponent} from '../user-edit-form/user-edit-form.component';
+import {UsersService} from '../../../shared/services/users/users.service';
 
 @Component({
   selector: 'app-user-edit',
@@ -12,15 +13,20 @@ export class UserEditComponent implements OnInit {
 
   @Input() user: IUser;
 
-  constructor(private modalService: ModalService) { }
+  constructor(
+    private modalService: ModalService,
+    private usersService: UsersService
+  ) { }
 
   ngOnInit() {
   }
 
-  onEdit(event: Event) {
+  onEdit() {
     this.modalService.open(UserEditFormComponent, {data: this.user, title: 'Редактировать пользователя'});
   }
 
-  onDelete(event: Event) {}
+  onDelete() {
+    this.usersService.remove(this.user.id);
+  }
 
 }

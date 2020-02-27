@@ -117,7 +117,7 @@ export class MainComponent implements OnInit {
   }
 
   async initMovies() {
-    const movies = await this.moviesService.getMovies();
-    this.movies = movies;
+    const response = await this.moviesService.getAll();
+    this.movies = response.content;
   }
 }

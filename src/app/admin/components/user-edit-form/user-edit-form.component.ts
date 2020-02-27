@@ -4,6 +4,7 @@ import {ModalConfig} from '../../../shared/classes/modal-config';
 import {ModalRef} from '../../../shared/classes/modal-ref';
 import {FormControl, FormGroup} from '@angular/forms';
 import {IUser} from '../../../shared/interfaces/user.interface';
+import {UsersService} from '../../../shared/services/users/users.service';
 
 @Component({
   selector: 'app-user-edit-form',
@@ -12,7 +13,7 @@ import {IUser} from '../../../shared/interfaces/user.interface';
 })
 export class UserEditFormComponent extends FormState implements OnInit {
 
-  user: IUser;
+  user: IUser | null;
 
   formGroup = new FormGroup({
       login: new FormControl(''),
@@ -23,23 +24,37 @@ export class UserEditFormComponent extends FormState implements OnInit {
   get password() { return this.formGroup.get('password'); }
   get role() { return this.formGroup.get('role'); }
 
-  constructor(public config: ModalConfig<IUser>, public modal: ModalRef) {
+  constructor(
+    public config: ModalConfig<IUser>,
+    public modal: ModalRef,
+    private usersService: UsersService)
+  {
     super();
   }
 
   ngOnInit() {
-    this.user = this.config.data;
+    this.user = this.config.data || null;
 
-    this.login.setValue(this.user.login);
-    this.password.setValue(this.user.password);
-    this.role.setValue(this.user.role);
+    this.login.setValue(this.user ? this.user.login : '');
+    this.password.setValue(this.user ? this.user.password : '');
+    this.role.setValue(this.user ? this.user.role.id : null);
   }
 
   onClose() {
     this.modal.close('user edit closed result');
   }
 
-  show() {
-    console.log(this.formGroup.value);
+  async onSave() {
+    try {
+      const response = await this.usersService.update({
+        id: this.user.id,
+        login: this.login.value,
+        password: this.password.value,
+        roleId: this.role.value
+      });
+      console.log(response);
+    } catch (e) {
+      console.error(e);
+    }
   }
 }

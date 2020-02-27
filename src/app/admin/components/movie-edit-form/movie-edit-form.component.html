@@ -16,12 +16,16 @@
       [placeholder]="'Жанр'"
       formControlName="genre"
     ></app-input>
+    <app-input
+      [placeholder]="'Ссылка на изображение'"
+      formControlName="preview">
+    </app-input>
     <textarea
       formControlName="description"
     ></textarea>
   </div>
   <div class="modal__controls">
-    <app-btn class="modal__control modal__control--submit" text="Сохранить"></app-btn>
+    <app-btn class="modal__control modal__control--submit" text="Сохранить" (click)="onSave()"></app-btn>
     <app-btn class="modal__control modal__control--cancel" [type]="'text'" text="Отмена" (click)="onClose()"></app-btn>
   </div>
 </form>

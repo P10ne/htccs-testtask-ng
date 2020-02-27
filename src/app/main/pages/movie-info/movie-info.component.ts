@@ -29,8 +29,8 @@ export class MovieInfoComponent implements OnInit {
   }
 
   async initMovie() {
-    const movie = await this.moviesService.getMovie(this.movieId);
-    this.movie = movie;
+    const response = await this.moviesService.getById(this.movieId);
+    this.movie = response.content;
   }
 
   goBack() {
