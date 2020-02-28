@@ -23,7 +23,8 @@
           </tr>
           </tbody>
         </table>
-        <p class="movie-info__info-description">{{movie.description}}</p>
+
+        <div class="movie-info__info-description" [innerHTML]="movie.description"></div>
       </div>
     </div>
   <div class="movie-info__space-info"></div>

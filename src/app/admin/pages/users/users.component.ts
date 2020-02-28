@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IUser} from '../../../shared/interfaces/user.interface';
 import {UsersService} from '../../../shared/services/users/users.service';
+import {ModalService} from '../../../shared/services/modal/modal.service';
+import {UserEditFormComponent} from '../../components/user-edit-form/user-edit-form.component';
 
 @Component({
   selector: 'app-users',
@@ -10,7 +12,10 @@ import {UsersService} from '../../../shared/services/users/users.service';
 export class UsersComponent implements OnInit {
 
   users: IUser[];
-  constructor(private usersService: UsersService) { }
+  constructor(
+    private usersService: UsersService,
+    private modalService: ModalService
+  ) { }
 
   ngOnInit() {
     this.initUsers();
@@ -22,4 +27,8 @@ export class UsersComponent implements OnInit {
     console.log(response);
   }
 
+  openModalToAddUser() {
+    this.modalService.open(UserEditFormComponent, {});
+    // todo подписка на закрытие и обновление списка
+  }
 }

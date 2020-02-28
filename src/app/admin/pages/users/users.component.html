@@ -1,3 +1,10 @@
-<div class="user-item__container" *ngFor="let user of users">
-  <app-user-edit [user]="user"></app-user-edit>
+<div class="admin-crud-page">
+  <div class="admin-crud-page__toolbar">
+    <app-btn text="Добавить" (click)="openModalToAddUser()"></app-btn>
+  </div>
+  <div class="admin-crud-page__list">
+    <div class="user-item__container" *ngFor="let user of users">
+      <app-user-edit [user]="user"></app-user-edit>
+    </div>
+  </div>
 </div>

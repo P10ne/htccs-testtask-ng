@@ -13,6 +13,7 @@ import { UsersComponent } from './pages/users/users.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { UserEditFormComponent } from './components/user-edit-form/user-edit-form.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
 
 const routes = [
   {
@@ -43,7 +44,8 @@ const routes = [
     CommonModule,
     SharedModule,
     RouterModule.forChild(routes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CKEditorModule
   ],
   entryComponents: [
     MovieEditFormComponent,

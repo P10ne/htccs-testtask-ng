@@ -15,6 +15,14 @@ export class UserEditFormComponent extends FormState implements OnInit {
 
   user: IUser | null;
 
+  get toUpdate() {
+    return this.user && this.user.id;
+  }
+
+  get toAdd() {
+    return !this.toUpdate;
+  }
+
   formGroup = new FormGroup({
       login: new FormControl(''),
       password: new FormControl(''),
@@ -45,6 +53,28 @@ export class UserEditFormComponent extends FormState implements OnInit {
   }
 
   async onSave() {
+    if (this.toUpdate) {
+      this.update();
+    } else if (this.toAdd) {
+      this.add();
+    }
+  }
+
+  async add() {
+    try {
+      const response = await this.usersService.add({
+        login: this.login.value,
+        password: this.password.value,
+        roleId: this.role.value
+      });
+      console.log(response);
+      this.modal.close();
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  async update() {
     try {
       const response = await this.usersService.update({
         id: this.user.id,
@@ -53,6 +83,7 @@ export class UserEditFormComponent extends FormState implements OnInit {
         roleId: this.role.value
       });
       console.log(response);
+      this.modal.close();
     } catch (e) {
       console.error(e);
     }

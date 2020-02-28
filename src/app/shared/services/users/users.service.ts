@@ -14,7 +14,7 @@ export class UsersService {
   constructor(private http: HttpClient) { }
 
   add(user: IUserToAdd): Promise<IResponse> {
-    return this.http.post<IResponse>(`${environment.HOST}/${this.dir}`, JSON.stringify(user)).toPromise();
+    return this.http.post<IResponse>(`${environment.HOST}/${this.dir}`, user).toPromise();
   }
 
   update(user: IUserToUpdate): Promise<IResponse> {

@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IMovie} from '../../../shared/interfaces/movie.interface';
 import {MoviesService} from '../../../shared/services/movies/movies.service';
+import {ModalService} from '../../../shared/services/modal/modal.service';
+import {MovieEditFormComponent} from '../../components/movie-edit-form/movie-edit-form.component';
 
 @Component({
   selector: 'app-movies',
@@ -11,7 +13,10 @@ export class MoviesComponent implements OnInit {
 
   movies: IMovie[];
 
-  constructor(private moviesService: MoviesService) { }
+  constructor(
+    private moviesService: MoviesService,
+    private modalService: ModalService
+  ) { }
 
   ngOnInit() {
     this.initMovies();
@@ -22,4 +27,8 @@ export class MoviesComponent implements OnInit {
     this.movies = response.content;
   }
 
+  openModalToAddMovie() {
+    this.modalService.open(MovieEditFormComponent, {});
+    // todo подписка на закрытие и обновление списка
+  }
 }

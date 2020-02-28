@@ -20,9 +20,10 @@
       [placeholder]="'Ссылка на изображение'"
       formControlName="preview">
     </app-input>
-    <textarea
+    <ckeditor
+      [editor]="Editor"
       formControlName="description"
-    ></textarea>
+    ></ckeditor>
   </div>
   <div class="modal__controls">
     <app-btn class="modal__control modal__control--submit" text="Сохранить" (click)="onSave()"></app-btn>

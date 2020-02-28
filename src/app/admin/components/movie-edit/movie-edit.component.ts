@@ -22,11 +22,12 @@ export class MovieEditComponent implements OnInit {
 
   onEdit() {
     const ref = this.modalService.open(MovieEditFormComponent, {data: this.movie, title: 'Редактировать фильм'});
+    // todo подписка на закрытие и обновление списка
   }
 
   async onDelete() {
     const result = await this.moviesService.delete(this.movie.id);
-    debugger
+    // todo обновление списка
   }
 
 }

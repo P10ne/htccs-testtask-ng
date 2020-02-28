@@ -1,7 +1,7 @@
 @import 'variables.scss';
 @import '~perfect-scrollbar/css/perfect-scrollbar.css';
 
-* {
+*[class] {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -53,4 +53,12 @@ app-comment {
 
   &--submit {}
   &--cancel {}
+}
+
+.admin-crud-page {
+  &__toolbar {
+    display: flex;
+    justify-content: flex-end;
+  }
+  &__list {}
 }
