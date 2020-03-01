@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {FormState} from '../../../shared/classes/form-state';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ModalConfig} from '../../../shared/classes/modal-config';
 import {ModalRef} from '../../../shared/classes/modal-ref';
@@ -12,7 +11,7 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
   templateUrl: './movie-edit-form.component.html',
   styleUrls: ['./movie-edit-form.component.scss']
 })
-export class MovieEditFormComponent extends FormState implements OnInit {
+export class MovieEditFormComponent implements OnInit {
 
   movie: IMovie | null;
 
@@ -45,9 +44,7 @@ export class MovieEditFormComponent extends FormState implements OnInit {
     public config: ModalConfig<IMovie>,
     public modal: ModalRef,
     private moviesService: MoviesService
-  ) {
-    super();
-  }
+  ) {}
 
   ngOnInit() {
     this.movie = this.config.data || null;

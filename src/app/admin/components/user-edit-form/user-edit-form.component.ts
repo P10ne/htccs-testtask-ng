@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {FormState} from '../../../shared/classes/form-state';
 import {ModalConfig} from '../../../shared/classes/modal-config';
 import {ModalRef} from '../../../shared/classes/modal-ref';
 import {FormControl, FormGroup} from '@angular/forms';
@@ -11,7 +10,7 @@ import {UsersService} from '../../../shared/services/users/users.service';
   templateUrl: './user-edit-form.component.html',
   styleUrls: ['./user-edit-form.component.scss']
 })
-export class UserEditFormComponent extends FormState implements OnInit {
+export class UserEditFormComponent implements OnInit {
 
   user: IUser | null;
 
@@ -35,10 +34,8 @@ export class UserEditFormComponent extends FormState implements OnInit {
   constructor(
     public config: ModalConfig<IUser>,
     public modal: ModalRef,
-    private usersService: UsersService)
-  {
-    super();
-  }
+    private usersService: UsersService
+  ) {}
 
   ngOnInit() {
     this.user = this.config.data || null;

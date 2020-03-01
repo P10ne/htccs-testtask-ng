@@ -21,6 +21,8 @@ export class ModalService {
 
     this.modalComponentRef[this.modalComponentRef.length - 1].instance.childComponentType = componentType;
 
+    document.body.classList.add('modal-open');
+
     return modalRef;
   }
 
@@ -30,6 +32,10 @@ export class ModalService {
       : this.modalComponentRef[this.modalComponentRef.length - 1];
     this.removeModalComponentFromBody(modalToClose);
     this.modalComponentRef = this.modalComponentRef.filter(c => c !== modalToClose);
+
+    if (this.modalComponentRef.length === 0) {
+      document.body.classList.remove('modal-open');
+    }
   }
 
   appendModalComponentToBody(config: ModalConfig) {
@@ -40,8 +46,7 @@ export class ModalService {
     map.set(ModalRef, modalRef);
 
     const sub = modalRef.afterClosed.subscribe(() => {
-      console.log('sub after closed');
-      this.removeModalComponentFromBody(modalRef.component);
+      this.close(modalRef.component);
       sub.unsubscribe();
     });
 
