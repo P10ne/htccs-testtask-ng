@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ModalConfig} from '../../../shared/classes/modal-config';
 import {ModalRef} from '../../../shared/classes/modal-ref';
@@ -13,7 +13,12 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 })
 export class MovieEditFormComponent implements OnInit {
 
+  public Editor = ClassicEditor;
   movie: IMovie | null;
+  saving: boolean;
+  setSaving(value) {
+    this.saving = value;
+  }
 
   get toUpdate() {
     return this.movie && this.movie.id;
@@ -22,6 +27,8 @@ export class MovieEditFormComponent implements OnInit {
   get toAdd() {
     return !this.toUpdate;
   }
+
+
 
   formGroup = new FormGroup({
     title: new FormControl(''),
@@ -38,7 +45,7 @@ export class MovieEditFormComponent implements OnInit {
   get preview() { return this.formGroup.get('preview'); }
   get description() { return this.formGroup.get('description'); }
 
-  public Editor = ClassicEditor;
+
 
   constructor(
     public config: ModalConfig<IMovie>,
@@ -62,11 +69,14 @@ export class MovieEditFormComponent implements OnInit {
   }
 
   async onSave() {
+    this.setSaving(true);
     if (this.toUpdate) {
-      this.update();
+      await this.update();
     } else if (this.toAdd) {
-      this.add();
+      await this.add();
     }
+    this.setSaving(false);
+    this.modal.close();
   }
 
   async add() {
@@ -80,7 +90,6 @@ export class MovieEditFormComponent implements OnInit {
         year: this.year.value
       });
       console.log(response);
-      this.modal.close();
     } catch (e) {
       console.error(e);
     }
@@ -98,7 +107,6 @@ export class MovieEditFormComponent implements OnInit {
         year: this.year.value
       });
       console.log(response);
-      this.modal.close();
     } catch (e) {
       console.error(e);
     }

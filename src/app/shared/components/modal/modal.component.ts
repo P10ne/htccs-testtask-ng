@@ -10,7 +10,7 @@ import {
   ViewChild
 } from '@angular/core';
 import {Subject} from 'rxjs';
-import {InsertionDirective} from '../../directives/insertion.directive';
+import {InsertionDirective} from '../../directives/insertion/insertion.directive';
 import {ModalService} from '../../services/modal/modal.service';
 
 @Component({

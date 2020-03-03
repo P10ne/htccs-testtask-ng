@@ -11,6 +11,10 @@ import {UsersService} from '../../../shared/services/users/users.service';
 })
 export class UserEditComponent implements OnInit {
 
+  deleting = false;
+  setDeleting(value) {
+    this.deleting = value;
+  }
   @Input() user: IUser;
 
   constructor(
@@ -25,8 +29,10 @@ export class UserEditComponent implements OnInit {
     this.modalService.open(UserEditFormComponent, {data: this.user, title: 'Редактировать пользователя'});
   }
 
-  onDelete() {
-    this.usersService.remove(this.user.id);
+  async onDelete() {
+    this.setDeleting(true);
+    await this.usersService.remove(this.user.id);
+    this.setDeleting(false);
   }
 
 }

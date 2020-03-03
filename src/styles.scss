@@ -44,15 +44,10 @@ app-comment {
   justify-content: flex-end;
   align-items: center;
   overflow: auto;
+  margin-top: 20px;
 }
 .modal__control {
-  margin: 0 5px;
-  &:last-child {
-    margin-right: 0;
-  }
-
-  &--submit {}
-  &--cancel {}
+  margin: 0 8px;
 }
 
 .admin-crud-page {
@@ -61,4 +56,29 @@ app-comment {
     justify-content: flex-end;
   }
   &__list {}
+}
+.form__group {
+  margin-bottom: 15px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.modal-open {
+  overflow: hidden;
+}
+
+/*
+  Формы
+*/
+
+.form {
+  &__group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }

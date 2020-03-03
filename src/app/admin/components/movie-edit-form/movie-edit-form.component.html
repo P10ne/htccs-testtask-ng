@@ -1,32 +1,50 @@
-<form class="modal movie-edit-form" novalidate [formGroup]="formGroup">
-  <div class="modal__body">
-    <app-input
-      [placeholder]="'Название'"
-      formControlName="title"
-    ></app-input>
-    <app-input
-      [placeholder]="'Год'"
-      formControlName="year"
-    ></app-input>
-    <app-input
-      [placeholder]="'Страна'"
-      formControlName="country"
-    ></app-input>
-    <app-input
-      [placeholder]="'Жанр'"
-      formControlName="genre"
-    ></app-input>
-    <app-input
-      [placeholder]="'Ссылка на изображение'"
-      formControlName="preview">
-    </app-input>
-    <ckeditor
-      [editor]="Editor"
-      formControlName="description"
-    ></ckeditor>
-  </div>
+<div class="movie-edit-form">
+  <form novalidate [formGroup]="formGroup">
+    <div class="form__group">
+      <div class="form__input">
+        <app-input
+          [placeholder]="'Название'"
+          formControlName="title"
+        ></app-input>
+      </div>
+      <div class="form__errors">
+        Обязательное поле
+      </div>
+
+    </div>
+    <div class="form__group">
+      <app-input
+        [placeholder]="'Год'"
+        formControlName="year"
+      ></app-input>
+    </div>
+    <div class="form__group">
+      <app-input
+        [placeholder]="'Страна'"
+        formControlName="country"
+      ></app-input>
+    </div>
+    <div class="form__group">
+      <app-input
+        [placeholder]="'Жанр'"
+        formControlName="genre"
+      ></app-input>
+    </div>
+    <div class="form__group">
+      <app-input
+        [placeholder]="'Ссылка на изображение'"
+        formControlName="preview">
+      </app-input>
+    </div>
+    <div class="form__group">
+      <ckeditor
+        [editor]="Editor"
+        formControlName="description"
+      ></ckeditor>
+    </div>
+  </form>
   <div class="modal__controls">
-    <app-btn class="modal__control modal__control--submit" text="Сохранить" (click)="onSave()"></app-btn>
-    <app-btn class="modal__control modal__control--cancel" [type]="'text'" text="Отмена" (click)="onClose()"></app-btn>
+    <app-btn class="modal__control modal__control--submit" text="Сохранить" (click)="onSave()" [wait]="saving"></app-btn>
+    <app-btn class="modal__control modal__control--cancel" [type]="'text'" text="Отмена" (click)="onClose()" [disabled]="saving"></app-btn>
   </div>
-</form>
+</div>

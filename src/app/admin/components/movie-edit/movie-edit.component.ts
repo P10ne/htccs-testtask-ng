@@ -12,6 +12,10 @@ import {MoviesService} from '../../../shared/services/movies/movies.service';
 export class MovieEditComponent implements OnInit {
 
   @Input() movie: IMovie;
+  deleting = false;
+  setDeleting(value) {
+    this.deleting = value;
+  }
   constructor(
     private modalService: ModalService,
     private moviesService: MoviesService
@@ -26,7 +30,9 @@ export class MovieEditComponent implements OnInit {
   }
 
   async onDelete() {
+    this.setDeleting(true);
     const result = await this.moviesService.delete(this.movie.id);
+    this.setDeleting(false);
     // todo обновление списка
   }
 

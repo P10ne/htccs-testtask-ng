@@ -5,7 +5,7 @@
       <app-btn [text]="'Редактировать'" [type]="'text'" (click)="onEdit()"></app-btn>
     </div>
     <div class="movie-edit__control">
-      <app-btn [text]="'Удалить'" [type]="'text'" (click)="onDelete()"></app-btn>
+      <app-btn [text]="'Удалить'" [type]="'text'" (click)="onDelete()" [wait]="deleting"></app-btn>
     </div>
   </div>
 </div>

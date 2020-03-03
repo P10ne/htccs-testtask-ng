@@ -12,6 +12,10 @@ import {UsersService} from '../../../shared/services/users/users.service';
 })
 export class UserEditFormComponent implements OnInit {
 
+  saving = false;
+  setSaving(value) {
+    this.saving = value;
+  }
   user: IUser | null;
 
   get toUpdate() {
@@ -50,11 +54,13 @@ export class UserEditFormComponent implements OnInit {
   }
 
   async onSave() {
+    this.setSaving(true);
     if (this.toUpdate) {
-      this.update();
+      await this.update();
     } else if (this.toAdd) {
-      this.add();
+      await this.add();
     }
+    this.setSaving(false);
   }
 
   async add() {

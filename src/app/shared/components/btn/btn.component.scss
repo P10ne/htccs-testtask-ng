@@ -1,13 +1,21 @@
 @import "~src/variables";
 
+@keyframes spinner-border {
+  to { transform: rotate(360deg); }
+}
+
 .btn {
+  position: relative;
   border: none;
+  display: flex;
+  align-items: center;
   border-radius: 4px;
   cursor: pointer;
   font-weight: 500;
   font-size: 16px;
   line-height: 19px;
-  &[disabled] {
+  overflow: hidden;
+  &--disabled {
     cursor: default;
     opacity: 0.5;
   }
@@ -18,6 +26,12 @@
     &:hover:not([disabled]) {
       background-color: $main-color-hover;
     }
+    & .btn__preloader {
+      &-icon {
+        border-color: #fff;
+        border-right-color: transparent;
+      }
+    }
   }
   &--text {
     background: transparent;
@@ -25,8 +39,48 @@
     &:hover {
       color: $main-color-hover;
     }
+    & .btn__preloader {
+      &-icon {
+        border-color: $main-color;
+        border-right-color: transparent;
+      }
+    }
+  }
+  &--wait {
+    cursor: default;
+    opacity: 0.5;
+    .btn__text {
+      color: transparent;
+    }
+    .btn__preloader {
+      display: flex;
+    }
   }
   &:focus {
     outline: none;
+  }
+  &__text {
+    user-select: none;
+  }
+  &__preloader {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    &-icon {
+      display: inline-block;
+      width: 1rem;
+      height: 1rem;
+      vertical-align: text-bottom;
+      border: .2em solid $main-color;
+      border-right-color: transparent;
+      border-radius: 50%;
+      -webkit-animation: spinner-border .75s linear infinite;
+      animation: spinner-border .75s linear infinite;
+    }
   }
 }

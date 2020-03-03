@@ -29,4 +29,7 @@
   &__title {
     font-weight: bold;
   }
+  &__body {
+    max-height: calc(100vh - 50px);
+  }
 }

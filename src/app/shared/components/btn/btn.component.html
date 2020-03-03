@@ -1,10 +1,15 @@
-<button
-  class="btn"
-  [ngClass]="{
+<span class="btn"
+      [ngClass]="{
     'btn--fill': isFill,
-    'btn--text': isText
+    'btn--text': isText,
+    'btn--wait': wait,
+    'btn--disabled': disabled
   }"
-  (click)="click($event)"
+      (click)="click($event)"
 >
-  {{text}}
-</button>
+  <span class="btn__text">{{text}}</span>
+  <div class="btn__preloader">
+    <span class="btn__preloader-icon"></span>
+  </div>
+</span>
+

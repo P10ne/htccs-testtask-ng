@@ -4,7 +4,7 @@ import { BtnComponent } from './components/btn/btn.component';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { InputComponent } from './components/input/input.component';
 import {ModalComponent} from './components/modal/modal.component';
-import { InsertionDirective } from './directives/insertion.directive';
+import { InsertionDirective } from './directives/insertion/insertion.directive';
 import {LogoComponent} from './components/logo/logo.component';
 import {TabComponent} from '../main/components/tab/tab.component';
 import {TabsComponent} from '../main/components/tabs/tabs.component';
@@ -15,6 +15,7 @@ import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { PreloaderComponent } from './components/preloader/preloader.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -31,7 +32,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     TabComponent,
     TabsComponent,
     SearchComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    PreloaderComponent
   ],
   exports: [
     BtnComponent,
@@ -43,7 +45,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     TabsComponent,
     SearchComponent,
     LoginFormComponent,
-    PerfectScrollbarModule
+    PerfectScrollbarModule,
+    PreloaderComponent
   ],
   entryComponents: [
     ModalComponent,
