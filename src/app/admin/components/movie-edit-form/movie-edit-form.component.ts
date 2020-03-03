@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
 import {ModalConfig} from '../../../shared/classes/modal-config';
 import {ModalRef} from '../../../shared/classes/modal-ref';
 import {IMovie} from '../../../shared/interfaces/movie.interface';
 import {MoviesService} from '../../../shared/services/movies/movies.service';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import {validationMessage} from '../../../shared/utils/validationMessage';
 
 @Component({
   selector: 'app-movie-edit-form',
@@ -12,7 +13,7 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
   styleUrls: ['./movie-edit-form.component.scss']
 })
 export class MovieEditFormComponent implements OnInit {
-
+  validationMessage = validationMessage;
   public Editor = ClassicEditor;
   movie: IMovie | null;
   saving: boolean;
@@ -31,12 +32,32 @@ export class MovieEditFormComponent implements OnInit {
 
 
   formGroup = new FormGroup({
-    title: new FormControl(''),
-    year: new FormControl(''),
-    country: new FormControl(''),
-    genre: new FormControl(''),
-    preview: new FormControl(''),
-    description: new FormControl('')
+    title: new FormControl(
+      '',
+      [
+        Validators.required
+      ]
+    ),
+    year: new FormControl(
+      '',
+      [Validators.required]
+      ),
+    country: new FormControl(
+      '',
+      [Validators.required]
+    ),
+    genre: new FormControl(
+      '',
+      [Validators.required]
+    ),
+    preview: new FormControl(
+      '',
+      [Validators.required]
+    ),
+    description: new FormControl(
+      '',
+      [Validators.required]
+    )
   });
   get title() { return this.formGroup.get('title'); }
   get year() { return this.formGroup.get('year'); }
@@ -45,7 +66,18 @@ export class MovieEditFormComponent implements OnInit {
   get preview() { return this.formGroup.get('preview'); }
   get description() { return this.formGroup.get('description'); }
 
+  isInvalidControl(controlName: string): boolean {
+    const control = this.formGroup.get(controlName);
+    return control.invalid && control.touched;
+  }
 
+  getErrorsControl(controlName: string): ValidationErrors {
+    return this.formGroup.get(controlName).errors;
+  }
+
+  isSaveBtnDisabled() {
+    return this.formGroup.invalid;
+  }
 
   constructor(
     public config: ModalConfig<IMovie>,

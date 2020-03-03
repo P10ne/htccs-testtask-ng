@@ -2,10 +2,10 @@
   <h4 class="movie-edit__title">{{movie.title}}</h4>
   <div class="movie-edit__controls">
     <div class="movie-edit__control">
-      <app-btn [text]="'Редактировать'" [type]="'text'" (click)="onEdit()"></app-btn>
+      <app-btn [text]="'Редактировать'" [type]="'text'" (onClick)="onEdit()"></app-btn>
     </div>
     <div class="movie-edit__control">
-      <app-btn [text]="'Удалить'" [type]="'text'" (click)="onDelete()" [wait]="deleting"></app-btn>
+      <app-btn [text]="'Удалить'" [type]="'text'" (onClick)="onDelete()" [wait]="deleting"></app-btn>
     </div>
   </div>
 </div>

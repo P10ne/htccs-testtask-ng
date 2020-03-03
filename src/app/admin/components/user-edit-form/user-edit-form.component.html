@@ -1,22 +1,44 @@
-<form class="modal movie-edit-form" novalidate [formGroup]="formGroup">
-  <div class="modal__body">
-    <app-input
-      [placeholder]="'Логин'"
-      type="text"
-      formControlName="login"
-    ></app-input>
-    <app-input
-      [placeholder]="'Пароль'"
-      type="password"
-      formControlName="password"
-    ></app-input>
-    <select formControlName="role">
-      <option [ngValue]="1">Администратор</option>
-      <option [ngValue]="2">Пользователь</option>
-    </select>
-  </div>
+<div class="user-edit-form">
+  <form class="modal__body" novalidate [formGroup]="formGroup">
+    <div class="form__group">
+      <div class="form__input">
+        <app-input
+          [placeholder]="'Логин'"
+          type="text"
+          formControlName="login"
+        ></app-input>
+      </div>
+      <div class="form__errors" *ngIf="isInvalidControl('login')">
+        <span class="form__error" *ngIf="getErrorsControl('login').required">{{validationMessage.required}}</span>
+      </div>
+    </div>
+    <div class="form__group">
+      <div class="form__input">
+        <app-input
+          [placeholder]="'Пароль'"
+          type="password"
+          formControlName="password"
+        ></app-input>
+      </div>
+      <div class="form__errors" *ngIf="isInvalidControl('password')">
+        <span class="form__error" *ngIf="getErrorsControl('password').required">{{validationMessage.required}}</span>
+      </div>
+    </div>
+    <div class="form__group">
+      <div class="form__input">
+        <select formControlName="role">
+          <option [ngValue]="1">Администратор</option>
+          <option [ngValue]="2">Пользователь</option>
+        </select>
+      </div>
+      <div class="form__errors" *ngIf="isInvalidControl('role')">
+        <span class="form__error" *ngIf="getErrorsControl('role').required">{{validationMessage.required}}</span>
+      </div>
+    </div>
+
+  </form>
   <div class="modal__controls">
-    <app-btn class="modal__control modal__control--submit" text="Сохранить" (click)="onSave()"></app-btn>
+    <app-btn class="modal__control modal__control--submit" text="Сохранить" (onClick)="onSave()" [disabled]="isSaveBtnDisabled()"></app-btn>
     <app-btn class="modal__control modal__control--cancel" [type]="'text'" text="Отмена" (click)="onClose()"></app-btn>
   </div>
-</form>
+</div>

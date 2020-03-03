@@ -57,12 +57,6 @@ app-comment {
   }
   &__list {}
 }
-.form__group {
-  margin-bottom: 15px;
-  &:last-child {
-    margin-bottom: 0;
-  }
-}
 
 .modal-open {
   overflow: hidden;
@@ -80,5 +74,12 @@ app-comment {
     &:last-child {
       margin-bottom: 0;
     }
+  }
+  &__input {
+
+  }
+  &__errors {
+    font-size: 12px;
+    color: $main-color;
   }
 }

@@ -3,4 +3,6 @@
   [disabled]="disabled"
   [placeholder]="placeholder"
   [type]="type"
-  [(ngModel)]="value" />
+  [(ngModel)]="value"
+  (blur)="onTouch($event)"
+/>

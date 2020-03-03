@@ -11,7 +11,7 @@ export class BtnComponent implements OnInit {
   @Input() type = 'fill';
   @Input() wait = false;
   @Input() disabled = false;
-  @Output() clickEmitter = new EventEmitter();
+  @Output() onClick = new EventEmitter();
 
   get isFill() { return this.type === 'fill'; }
   get isText() { return this.type === 'text'; }
@@ -23,8 +23,7 @@ export class BtnComponent implements OnInit {
 
   click(event: Event) {
     if (!this.disabled && !this.wait) {
-      console.log('clicked');
-      this.clickEmitter.emit(event);
+      this.onClick.emit(event);
     }
   }
 }

@@ -28,6 +28,7 @@ export class InputComponent implements OnInit, ControlValueAccessor  {
   }
 
   propagateChange = (_: any) => {};
+  onTouch = (_: any) => {};
 
   constructor() { }
 
@@ -38,7 +39,9 @@ export class InputComponent implements OnInit, ControlValueAccessor  {
     this.propagateChange = fn;
   }
 
-  registerOnTouched(fn: any): void {}
+  registerOnTouched(fn: any): void {
+    this.onTouch = fn;
+  }
 
   setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
