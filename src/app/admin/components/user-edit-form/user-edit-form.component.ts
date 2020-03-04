@@ -5,6 +5,7 @@ import {FormControl, FormGroup, ValidationErrors, Validators} from '@angular/for
 import {IUser} from '../../../shared/interfaces/user.interface';
 import {UsersService} from '../../../shared/services/users/users.service';
 import {validationMessage} from '../../../shared/utils/validationMessage';
+import {Observable, of} from 'rxjs';
 
 @Component({
   selector: 'app-user-edit-form',
@@ -31,7 +32,10 @@ export class UserEditFormComponent implements OnInit {
   formGroup = new FormGroup({
       login: new FormControl(
         '',
-      [Validators.required]
+        {
+          validators: [Validators.required],
+          updateOn: 'blur'
+        }
       ),
       password: new FormControl(
         '',
@@ -54,7 +58,7 @@ export class UserEditFormComponent implements OnInit {
   }
 
   isSaveBtnDisabled() {
-    return this.formGroup.invalid;
+    return this.formGroup.invalid || this.formGroup.pending;
   }
 
   constructor(
@@ -78,6 +82,7 @@ export class UserEditFormComponent implements OnInit {
     this.password.setValue('');
     this.role.setValue(null);
 
+    this.login.setAsyncValidators([this.isExistLoginValidator.bind(this)]);
     this.password.setValidators([Validators.required, Validators.minLength(8)]);
   }
 
@@ -134,5 +139,15 @@ export class UserEditFormComponent implements OnInit {
     } catch (e) {
       console.error(e);
     }
+  }
+
+  async isExistLoginValidator(control: FormControl) {
+    const login = control.value;
+    const user = await this.usersService.isUserExist(login);
+    let result = null;
+    if (user.content.length > 0) {
+      result = {isExistLogin: true};
+    }
+    return result;
   }
 }

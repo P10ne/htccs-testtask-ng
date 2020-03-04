@@ -10,6 +10,7 @@
       </div>
       <div class="form__errors" *ngIf="isInvalidControl('login')">
         <span class="form__error" *ngIf="getErrorsControl('login').required">{{validationMessage.required}}</span>
+        <span class="form__error" *ngIf="getErrorsControl('login').isExistLogin">{{validationMessage.isExist('Логин')}}</span>
       </div>
     </div>
     <div class="form__group">

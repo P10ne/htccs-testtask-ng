@@ -1,8 +1,14 @@
-<input
-  class="input"
-  [disabled]="disabled"
-  [placeholder]="placeholder"
-  [type]="type"
-  [(ngModel)]="value"
-  (blur)="onTouch($event)"
-/>
+<div class="input">
+  <input
+    class="input__input"
+    [disabled]="disabled"
+    [placeholder]="placeholder"
+    [type]="type"
+    [(ngModel)]="value"
+    (blur)="onTouch($event)"
+  />
+  <div class="input__spinner-container">
+    <div class="input__spinner"></div>
+  </div>
+</div>
+

@@ -28,4 +28,8 @@ export class UsersService {
   remove(id: number): Promise<IResponse> {
     return this.http.delete<IResponse>(`${environment.HOST}/${this.dir}/${id}`).toPromise();
   }
+
+  isUserExist(login: string): Promise<IResponse> {
+    return this.http.get<IResponse>(`${environment.HOST}/${this.dir}?login=${login}`).toPromise();
+  }
 }

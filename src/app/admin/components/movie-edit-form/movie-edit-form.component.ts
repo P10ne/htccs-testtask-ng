@@ -76,7 +76,7 @@ export class MovieEditFormComponent implements OnInit {
   }
 
   isSaveBtnDisabled() {
-    return this.formGroup.invalid;
+    return this.formGroup.invalid || this.formGroup.pending;
   }
 
   constructor(

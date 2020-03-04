@@ -1,13 +1,45 @@
+@import '~src/variables';
+
+:host.ng-pending .input__spinner-container {
+  display: flex;
+}
+
 .input {
-  width: 100%;
-  border: none;
-  border-bottom: 1px solid #333333;
-  padding: 6px 0;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 19px;
-  background-color: transparent;
-  &:focus {
-    outline: none;
+  position: relative;
+  &__input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #333333;
+    padding: 6px 0;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19px;
+    background-color: transparent;
+    &:focus {
+      outline: none;
+    }
+  }
+  &__spinner {
+    flex: 0 0 14px;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    vertical-align: text-bottom;
+    border: 2px solid $main-color;
+    border-right-color: transparent;
+    border-radius: 50%;
+    -webkit-animation: spinner-border .75s linear infinite;
+    animation: spinner-border .75s linear infinite;
+
+    &-container {
+      position: absolute;
+      flex: 0 0 14px;
+      right: 0;
+      top: 0;
+      bottom: 1px;
+      background-color: #fff;
+      display: none;
+      align-items: center;
+    }
   }
 }
