@@ -16,6 +16,7 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { PreloaderComponent } from './components/preloader/preloader.component';
+import { FileInputComponent } from './components/file-input/file-input.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -33,7 +34,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     TabsComponent,
     SearchComponent,
     LoginFormComponent,
-    PreloaderComponent
+    PreloaderComponent,
+    FileInputComponent
   ],
   exports: [
     BtnComponent,
@@ -46,7 +48,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     SearchComponent,
     LoginFormComponent,
     PerfectScrollbarModule,
-    PreloaderComponent
+    PreloaderComponent,
+    FileInputComponent
   ],
   entryComponents: [
     ModalComponent,

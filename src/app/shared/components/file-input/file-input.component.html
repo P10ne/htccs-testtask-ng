@@ -1,0 +1,18 @@
+<div class="file-input">
+  <div class="file-input__files">
+    <div class="file-input__file-item" *ngFor="let file of files">
+      <span class="file-input__file-name">{{file.name}}</span>
+      <app-btn type="text" text="Удалить" (onClick)="delete(file)" [disabled]="!canDeleteFile"></app-btn>
+    </div>
+  </div>
+  <div class="file-input__add">
+    <app-btn type="text" [text]="multiple ? 'Добавить' : 'Выбрать'" (onClick)="onAddFile()" [disabled]="!canAppendFile"></app-btn>
+  </div>
+  <input
+    type="file"
+    #file hidden="true"
+    (change)="appendFiles($event.target.files)"
+    [multiple]="multiple"
+    [accept]="accept"
+  >
+</div>

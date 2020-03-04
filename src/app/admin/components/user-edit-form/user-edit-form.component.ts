@@ -91,9 +91,12 @@ export class UserEditFormComponent implements OnInit {
     this.password.setValue('');
     this.role.setValue(this.user.role.id);
 
+
+    // todo нет валидации при одном символе, setValidators выполняется при каждом изменении значения
     this.password.valueChanges.subscribe(value => {
       if (value !== '') {
         this.password.setValidators([Validators.minLength(8)]);
+        this.password.updateValueAndValidity();
       }
     });
   }

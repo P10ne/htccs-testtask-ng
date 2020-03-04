@@ -40,23 +40,40 @@ export class MovieEditFormComponent implements OnInit {
     ),
     year: new FormControl(
       '',
-      [Validators.required]
-      ),
+      [
+        Validators.required
+      ]
+    ),
     country: new FormControl(
       '',
-      [Validators.required]
+      [
+        Validators.required
+      ]
     ),
     genre: new FormControl(
       '',
-      [Validators.required]
+      [
+        Validators.required
+      ]
     ),
     preview: new FormControl(
       '',
-      [Validators.required]
+      [
+        Validators.required
+      ]
     ),
     description: new FormControl(
       '',
-      [Validators.required]
+      [
+        Validators.required
+      ]
+    ),
+    file: new FormControl(
+      [],
+      [
+        Validators.required,
+        this.previewSizeValidator.bind(this)
+      ]
     )
   });
   get title() { return this.formGroup.get('title'); }
@@ -65,6 +82,7 @@ export class MovieEditFormComponent implements OnInit {
   get genre() { return this.formGroup.get('genre'); }
   get preview() { return this.formGroup.get('preview'); }
   get description() { return this.formGroup.get('description'); }
+  get file() { return this.formGroup.get('file'); }
 
   isInvalidControl(controlName: string): boolean {
     const control = this.formGroup.get(controlName);
@@ -88,12 +106,13 @@ export class MovieEditFormComponent implements OnInit {
   ngOnInit() {
     this.movie = this.config.data || null;
 
-    this.title.setValue(this.movie ? this.movie.title : '');
-    this.year.setValue(this.movie ? this.movie.year : '');
-    this.country.setValue(this.movie ? this.movie.country : '');
-    this.genre.setValue(this.movie ? this.movie.genre : '');
-    this.preview.setValue(this.movie ? this.movie.imgSrc : '');
-    this.description.setValue(this.movie ? this.movie.description : '');
+    this.title.setValue(this.movie ? this.movie.title : 'asdf');
+    this.year.setValue(this.movie ? this.movie.year : 234);
+    this.country.setValue(this.movie ? this.movie.country : 'asd');
+    this.genre.setValue(this.movie ? this.movie.genre : 'asdf');
+    this.preview.setValue(this.movie ? this.movie.imgSrc : 'erg');
+    this.description.setValue(this.movie ? this.movie.description : 'aweg w');
+    this.file.setValue([]);
   }
 
   onClose() {
@@ -119,7 +138,8 @@ export class MovieEditFormComponent implements OnInit {
         description: this.description.value,
         genre: this.genre.value,
         imgSrc: this.preview.value,
-        year: this.year.value
+        year: this.year.value,
+        preview: this.file.value[0]
       });
       console.log(response);
     } catch (e) {
@@ -143,4 +163,15 @@ export class MovieEditFormComponent implements OnInit {
       console.error(e);
     }
   }
+
+  previewSizeValidator(control: FormControl) {
+    const file = control.value[0];
+    if (file) {
+      if (file.size > 100 * 1024) {
+        return {maxSize: true};
+      }
+      return null;
+    }
+  }
+
 }

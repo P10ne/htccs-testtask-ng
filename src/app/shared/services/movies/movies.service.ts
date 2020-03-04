@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {IMovie, IMovieToAdd, IMovieToUpdate} from '../../interfaces/movie.interface';
 import {environment} from '../../../../environments/environment';
 import {IResponse} from '../../interfaces/response.interface';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +13,18 @@ export class MoviesService {
 
   constructor(private http: HttpClient) { }
 
+  // todo
   add(movie: IMovieToAdd): Promise<IResponse> {
-    return this.http.post<IResponse>(`${environment.HOST}/${this.dir}`, movie).toPromise();
+    console.log(movie);
+    const formData = new FormData();
+    formData.append('title', movie.title);
+    formData.append('year', movie.year.toString());
+    formData.append('imgSrc', movie.imgSrc);
+    formData.append('genre', movie.genre);
+    formData.append('description', movie.description);
+    formData.append('country', movie.country);
+    formData.append('preview', movie.preview, movie.preview.name);
+    return this.http.post<IResponse>(`${environment.HOST}/${this.dir}`, formData).toPromise();
   }
 
   update(movie: IMovieToUpdate): Promise<IResponse> {

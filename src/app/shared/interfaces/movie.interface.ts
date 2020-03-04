@@ -15,6 +15,7 @@ export interface IMovieToAdd {
   year: number;
   country: string;
   genre: string;
+  preview: File;
 }
 
 export interface IMovieToUpdate {

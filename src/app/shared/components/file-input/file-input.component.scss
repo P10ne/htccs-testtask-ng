@@ -1,0 +1,18 @@
+.file-input {
+  display: flex;
+  flex-direction: column;
+
+  &__files {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__file-item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__add {
+
+  }
+}

@@ -68,6 +68,18 @@
         <span class="form__error" *ngIf="getErrorsControl('description').required">{{validationMessage.required}}</span>
       </div>
     </div>
+    <div class="form__group">
+      <div class="form__input">
+        <app-file-input
+          formControlName="file"
+          accept="image/jpeg,image/png"
+        ></app-file-input>
+      </div>
+      <div class="form__errors" *ngIf="isInvalidControl('file')">
+        <span class="form__error" *ngIf="getErrorsControl('file').required">{{validationMessage.custom('Загрузите изображение')}}</span>
+        <span class="form__error" *ngIf="getErrorsControl('file').maxSize">{{validationMessage.custom('Размер изображения не должен превышать N Мб')}}</span>
+      </div>
+    </div>
   </form>
   <div class="modal__controls">
     <app-btn class="modal__control modal__control--submit" text="Сохранить" (onClick)="onSave()" [wait]="saving" [disabled]="isSaveBtnDisabled()"></app-btn>
