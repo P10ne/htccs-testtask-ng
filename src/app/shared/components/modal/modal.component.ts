@@ -20,6 +20,7 @@ import {ModalService} from '../../services/modal/modal.service';
 })
 export class ModalComponent implements AfterViewInit, OnDestroy {
   title = '';
+  canClose = true;
 
   public componentRef: ComponentRef<any>;
   public childComponentType: Type<any>;
@@ -38,7 +39,7 @@ export class ModalComponent implements AfterViewInit, OnDestroy {
     this.cd.detectChanges();
   }
 
-  onOverlayClicked() {
+  onClose() {
     this.modalService.close();
   }
 

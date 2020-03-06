@@ -58,7 +58,7 @@ export class UserEditFormComponent implements OnInit {
   }
 
   isSaveBtnDisabled() {
-    return this.formGroup.invalid || this.formGroup.pending;
+    return this.formGroup.invalid || this.formGroup.pending || this.saving;
   }
 
   constructor(

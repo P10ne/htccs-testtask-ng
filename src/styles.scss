@@ -66,11 +66,15 @@ a {
       margin-bottom: 0;
     }
   }
-  &__input {
-
+  &__label {
+    font-weight: bold;
   }
   &__errors {
     font-size: 12px;
     color: $main-color;
   }
+  &__scroll {
+    max-height: calc(100vh - 140px);
+  }
 }
+

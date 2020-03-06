@@ -16,9 +16,13 @@ export class MovieEditFormComponent implements OnInit {
   validationMessage = validationMessage;
   public Editor = ClassicEditor;
   movie: IMovie | null;
-  saving: boolean;
-  setSaving(value) {
-    this.saving = value;
+
+  _saving: boolean;
+  set saving(value) {
+    this._saving = value;
+  }
+  get saving() {
+    return this._saving;
   }
 
   get toUpdate() {
@@ -120,13 +124,13 @@ export class MovieEditFormComponent implements OnInit {
   }
 
   async onSave() {
-    this.setSaving(true);
+    this.saving = true;
     if (this.toUpdate) {
       await this.update();
     } else if (this.toAdd) {
       await this.add();
     }
-    this.setSaving(false);
+    this.saving = false;
     this.modal.close();
   }
 

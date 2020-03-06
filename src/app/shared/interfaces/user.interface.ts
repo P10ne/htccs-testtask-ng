@@ -17,3 +17,7 @@ export interface IUserToUpdate {
   password?: string;
   roleId?: number;
 }
+export interface IToLogin {
+  login: string;
+  password: string;
+}

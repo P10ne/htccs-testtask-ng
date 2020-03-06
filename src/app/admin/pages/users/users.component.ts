@@ -28,7 +28,7 @@ export class UsersComponent implements OnInit {
   }
 
   openModalToAddUser() {
-    this.modalService.open(UserEditFormComponent, {});
+    this.modalService.open(UserEditFormComponent, {title: 'Добавить пользователя'});
     // todo подписка на закрытие и обновление списка
   }
 }

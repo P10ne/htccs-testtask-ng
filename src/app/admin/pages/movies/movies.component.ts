@@ -28,7 +28,7 @@ export class MoviesComponent implements OnInit {
   }
 
   openModalToAddMovie() {
-    this.modalService.open(MovieEditFormComponent, {});
+    this.modalService.open(MovieEditFormComponent, {title: 'Добавить фильм'});
     // todo подписка на закрытие и обновление списка
   }
 }

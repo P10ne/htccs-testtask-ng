@@ -1,19 +1,27 @@
-<form class="login-form" [formGroup]="formGroup" novalidate (ngSubmit)="submit()">
+<form class="login-form" [formGroup]="formGroup" novalidate [perfectScrollbar]>
   <div class="login-form__content">
     <h2 class="login-form__title">Вход</h2>
-    <div class="login-form__row">
-      <app-input
-        [placeholder]="'Логин'"
-        formControlName="login"
-        [type]="'text'">
-      </app-input>
+    <div class="form__group">
+      <div class="form__input">
+        <app-input
+          [placeholder]="'Логин'"
+          formControlName="login"
+          [type]="'text'">
+        </app-input>
+      </div>
+      <div class="form__errors" *ngIf="isInvalidControl('login')">
+      </div>
     </div>
-    <div class="login-form__row">
-      <app-input
-        [placeholder]="'Пароль'"
-        formControlName="password"
-        [type]="'password'">
-      </app-input>
+    <div class="form__group">
+      <div class="form__input">
+        <app-input
+          [placeholder]="'Пароль'"
+          formControlName="password"
+          [type]="'password'">
+        </app-input>
+      </div>
+      <div class="form__errors" *ngIf="isInvalidControl('password')">
+      </div>
     </div>
     <div class="login-form__row">
       <app-checkbox
@@ -24,6 +32,9 @@
   </div>
   <div class="login-form__submit-container">
     <app-btn
+      [disabled]="isAuthBtnDisabled()"
+      [wait]="requesting"
+      (onClick)="submit()"
       text="Войти"
     ></app-btn>
   </div>

@@ -1,9 +1,10 @@
 <div class="movie-edit-form">
-  <form novalidate [formGroup]="formGroup">
+  <form class="form__scroll" novalidate [formGroup]="formGroup" [perfectScrollbar]>
     <div class="form__group">
+      <label for="title" class="form__label">Название</label>
       <div class="form__input">
         <app-input
-          [placeholder]="'Название'"
+          id="title"
           formControlName="title"
         ></app-input>
       </div>
@@ -13,9 +14,9 @@
 
     </div>
     <div class="form__group">
+      <label class="form__label">Год</label>
       <div class="form__input">
         <app-input
-          [placeholder]="'Год'"
           formControlName="year"
         ></app-input>
       </div>
@@ -25,9 +26,9 @@
 
     </div>
     <div class="form__group">
+      <label class="form__label">Страна</label>
       <div class="form__input">
         <app-input
-          [placeholder]="'Страна'"
           formControlName="country"
         ></app-input>
       </div>
@@ -36,9 +37,9 @@
       </div>
     </div>
     <div class="form__group">
+      <label class="form__label">Жанр</label>
       <div class="form__input">
         <app-input
-          [placeholder]="'Жанр'"
           formControlName="genre"
         ></app-input>
       </div>
@@ -47,28 +48,7 @@
       </div>
     </div>
     <div class="form__group">
-      <div class="form__input">
-        <app-input
-          [placeholder]="'Ссылка на изображение'"
-          formControlName="preview">
-        </app-input>
-      </div>
-      <div class="form__errors" *ngIf="isInvalidControl('preview')">
-        <span class="form__error" *ngIf="getErrorsControl('preview').required">{{validationMessage.required}}</span>
-      </div>
-    </div>
-    <div class="form__group">
-      <div class="form__input">
-        <ckeditor
-          [editor]="Editor"
-          formControlName="description"
-        ></ckeditor>
-      </div>
-      <div class="form__errors" *ngIf="isInvalidControl('description')">
-        <span class="form__error" *ngIf="getErrorsControl('description').required">{{validationMessage.required}}</span>
-      </div>
-    </div>
-    <div class="form__group">
+      <label class="form__label">Изображение</label>
       <div class="form__input">
         <app-file-input
           formControlName="file"
@@ -78,6 +58,18 @@
       <div class="form__errors" *ngIf="isInvalidControl('file')">
         <span class="form__error" *ngIf="getErrorsControl('file').required">{{validationMessage.custom('Загрузите изображение')}}</span>
         <span class="form__error" *ngIf="getErrorsControl('file').maxSize">{{validationMessage.custom('Размер изображения не должен превышать N Мб')}}</span>
+      </div>
+    </div>
+    <div class="form__group">
+      <label class="form__label">Описание</label>
+      <div class="form__input">
+        <ckeditor
+          [editor]="Editor"
+          formControlName="description"
+        ></ckeditor>
+      </div>
+      <div class="form__errors" *ngIf="isInvalidControl('description')">
+        <span class="form__error" *ngIf="getErrorsControl('description').required">{{validationMessage.required}}</span>
       </div>
     </div>
   </form>
