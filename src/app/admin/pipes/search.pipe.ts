@@ -11,7 +11,7 @@ export class SearchPipe implements PipeTransform {
     if (value) {
       const searchValue = args[0];
       const searchField = args[1];
-      const regexp = new RegExp(`${args[0]}`, 'i');
+      const regexp = new RegExp(`${searchValue}`, 'i');
       const filtered = value.filter(item => item[searchField].match(regexp));
       return filtered;
     }

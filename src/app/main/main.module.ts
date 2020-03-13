@@ -40,8 +40,7 @@ const routes = [
   imports: [
     CommonModule,
     SharedModule,
-    RouterModule.forChild(routes),
-    AdminModule
+    RouterModule.forChild(routes)
   ],
   exports: []
 })
