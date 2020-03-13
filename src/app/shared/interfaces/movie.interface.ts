@@ -1,7 +1,7 @@
 export interface IMovie {
   id: number;
   title: string;
-  imgSrc: string;
+  preview: string;
   description: string;
   year: number;
   country: string;
@@ -10,7 +10,6 @@ export interface IMovie {
 
 export interface IMovieToAdd {
   title: string;
-  imgSrc: string;
   description: string;
   year: number;
   country: string;
@@ -21,9 +20,9 @@ export interface IMovieToAdd {
 export interface IMovieToUpdate {
   id: number;
   title: string;
-  imgSrc: string;
   description: string;
   year: number;
   country: string;
   genre: string;
+  preview: File;
 }

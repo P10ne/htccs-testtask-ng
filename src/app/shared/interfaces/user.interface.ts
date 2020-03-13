@@ -1,4 +1,5 @@
 import {IRole} from './role.interface';
+import {IAccessToken} from '../services/auth/auth.service';
 
 export interface IUser {
   id: number;
@@ -20,4 +21,9 @@ export interface IUserToUpdate {
 export interface IToLogin {
   login: string;
   password: string;
+  fingerPrint: string;
+}
+export interface IRefreshTokens {
+  refreshToken: string;
+  fingerPrint: string;
 }

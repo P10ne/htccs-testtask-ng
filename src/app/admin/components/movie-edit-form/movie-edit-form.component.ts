@@ -61,7 +61,7 @@ export class MovieEditFormComponent implements OnInit {
       ]
     ),
     preview: new FormControl(
-      '',
+      [],
       [
         Validators.required
       ]
@@ -71,13 +71,6 @@ export class MovieEditFormComponent implements OnInit {
       [
         Validators.required
       ]
-    ),
-    file: new FormControl(
-      [],
-      [
-        Validators.required,
-        this.previewSizeValidator.bind(this)
-      ]
     )
   });
   get title() { return this.formGroup.get('title'); }
@@ -86,7 +79,6 @@ export class MovieEditFormComponent implements OnInit {
   get genre() { return this.formGroup.get('genre'); }
   get preview() { return this.formGroup.get('preview'); }
   get description() { return this.formGroup.get('description'); }
-  get file() { return this.formGroup.get('file'); }
 
   isInvalidControl(controlName: string): boolean {
     const control = this.formGroup.get(controlName);
@@ -109,14 +101,24 @@ export class MovieEditFormComponent implements OnInit {
 
   ngOnInit() {
     this.movie = this.config.data || null;
+    if (this.toAdd) {
+      this.initToAdd();
+    } else if (this.toUpdate) {
+      this.initToUpdate();
+    }
 
-    this.title.setValue(this.movie ? this.movie.title : 'asdf');
-    this.year.setValue(this.movie ? this.movie.year : 234);
-    this.country.setValue(this.movie ? this.movie.country : 'asd');
-    this.genre.setValue(this.movie ? this.movie.genre : 'asdf');
-    this.preview.setValue(this.movie ? this.movie.imgSrc : 'erg');
-    this.description.setValue(this.movie ? this.movie.description : 'aweg w');
-    this.file.setValue([]);
+  }
+
+  initToAdd() {
+  }
+
+  initToUpdate() {
+    this.title.setValue(this.movie.title);
+    this.year.setValue(this.movie.year);
+    this.country.setValue(this.movie.country);
+    this.genre.setValue(this.movie.genre);
+    this.preview.setValue([]);
+    this.description.setValue(this.movie.description);
   }
 
   onClose() {
@@ -141,9 +143,8 @@ export class MovieEditFormComponent implements OnInit {
         country: this.country.value,
         description: this.description.value,
         genre: this.genre.value,
-        imgSrc: this.preview.value,
         year: this.year.value,
-        preview: this.file.value[0]
+        preview: this.preview.value[0]
       });
       console.log(response);
     } catch (e) {
@@ -159,7 +160,7 @@ export class MovieEditFormComponent implements OnInit {
         country: this.country.value,
         description: this.description.value,
         genre: this.genre.value,
-        imgSrc: this.preview.value,
+        preview: this.preview.value,
         year: this.year.value
       });
       console.log(response);

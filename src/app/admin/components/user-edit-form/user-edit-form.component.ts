@@ -5,7 +5,6 @@ import {FormControl, FormGroup, ValidationErrors, Validators} from '@angular/for
 import {IUser} from '../../../shared/interfaces/user.interface';
 import {UsersService} from '../../../shared/services/users/users.service';
 import {validationMessage} from '../../../shared/utils/validationMessage';
-import {Observable, of} from 'rxjs';
 
 @Component({
   selector: 'app-user-edit-form',
@@ -148,7 +147,7 @@ export class UserEditFormComponent implements OnInit {
     const login = control.value;
     const user = await this.usersService.isUserExist(login);
     let result = null;
-    if (user.content.length > 0) {
+    if (user.content) {
       result = {isExistLogin: true};
     }
     return result;

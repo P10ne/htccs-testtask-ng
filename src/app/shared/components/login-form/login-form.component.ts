@@ -5,6 +5,7 @@ import {UsersService} from '../../services/users/users.service';
 import {AuthService} from '../../services/auth/auth.service';
 import {IToLogin} from '../../interfaces/user.interface';
 import {ModalRef} from '../../classes/modal-ref';
+import {getFingerprint} from '../../utils/fingerPrint';
 
 @Component({
   selector: 'app-login-form',
@@ -62,7 +63,8 @@ export class LoginFormComponent implements OnInit {
     this.requesting = true;
     const data: IToLogin = {
       login: this.login.value,
-      password: this.password.value
+      password: this.password.value,
+      fingerPrint: await getFingerprint()
     };
     await this.authService.login(data);
     this.requesting = false;

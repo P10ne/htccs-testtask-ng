@@ -19,7 +19,6 @@ export class MoviesService {
     const formData = new FormData();
     formData.append('title', movie.title);
     formData.append('year', movie.year.toString());
-    formData.append('imgSrc', movie.imgSrc);
     formData.append('genre', movie.genre);
     formData.append('description', movie.description);
     formData.append('country', movie.country);

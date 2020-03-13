@@ -11,10 +11,9 @@ import {MovieItemComponent} from './components/movie-item/movie-item.component';
 import {MovieInfoComponent} from './pages/movie-info/movie-info.component';
 import {GenreItemComponent} from './components/genre-item/genre-item.component';
 import {ChannelItemComponent} from './components/channel-item/channel-item.component';
-import {LoginFormComponent} from '../shared/components/login-form/login-form.component';
 import {AddCommentComponent} from './components/add-comment/add-comment.component';
 import {CommentComponent} from './components/comment/comment.component';
-import {SearchComponent} from '../shared/components/search/search.component';
+import {AdminModule} from '../admin/admin.module';
 
 const routes = [
   {path: '', component: MainLayoutComponent, children: [
@@ -41,7 +40,8 @@ const routes = [
   imports: [
     CommonModule,
     SharedModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    AdminModule
   ],
   exports: []
 })

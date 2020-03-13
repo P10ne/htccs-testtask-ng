@@ -51,13 +51,13 @@
       <label class="form__label">Изображение</label>
       <div class="form__input">
         <app-file-input
-          formControlName="file"
+          formControlName="preview"
           accept="image/jpeg,image/png"
         ></app-file-input>
       </div>
-      <div class="form__errors" *ngIf="isInvalidControl('file')">
-        <span class="form__error" *ngIf="getErrorsControl('file').required">{{validationMessage.custom('Загрузите изображение')}}</span>
-        <span class="form__error" *ngIf="getErrorsControl('file').maxSize">{{validationMessage.custom('Размер изображения не должен превышать N Мб')}}</span>
+      <div class="form__errors" *ngIf="isInvalidControl('preview')">
+        <span class="form__error" *ngIf="getErrorsControl('preview').required">{{validationMessage.custom('Загрузите изображение')}}</span>
+        <span class="form__error" *ngIf="getErrorsControl('preview').maxSize">{{validationMessage.custom('Размер изображения не должен превышать N Мб')}}</span>
       </div>
     </div>
     <div class="form__group">
