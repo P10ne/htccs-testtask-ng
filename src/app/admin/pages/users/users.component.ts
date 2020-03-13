@@ -7,10 +7,11 @@ import {UserEditFormComponent} from '../../components/user-edit-form/user-edit-f
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+  styleUrls: ['./users.component.scss', '../../admin.scss']
 })
 export class UsersComponent implements OnInit {
 
+  searchValue = '';
   users: IUser[];
   constructor(
     private usersService: UsersService,
@@ -19,6 +20,10 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     this.initUsers();
+  }
+
+  updateSearchValue(newValue: string): void {
+    this.searchValue = newValue;
   }
 
   async initUsers() {

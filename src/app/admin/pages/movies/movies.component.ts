@@ -7,11 +7,12 @@ import {MovieEditFormComponent} from '../../components/movie-edit-form/movie-edi
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
-  styleUrls: ['./movies.component.scss']
+  styleUrls: ['./movies.component.scss', '../../admin.scss']
 })
 export class MoviesComponent implements OnInit {
 
   movies: IMovie[];
+  searchValue = '';
 
   constructor(
     private moviesService: MoviesService,
@@ -20,6 +21,11 @@ export class MoviesComponent implements OnInit {
 
   ngOnInit() {
     this.initMovies();
+  }
+
+  updateSearchValue(newValue: string): void {
+    this.searchValue = newValue;
+    console.log(this.searchValue);
   }
 
   async initMovies() {

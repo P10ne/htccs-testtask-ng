@@ -1,10 +1,19 @@
-<div class="admin-crud-page">
-  <div class="admin-crud-page__toolbar">
-    <app-btn text="Добавить" (click)="openModalToAddUser()"></app-btn>
+<div class="admin-tab-section">
+  <div class="search-container">
+    <app-search
+      (searchEmitter)="updateSearchValue($event)"
+    ></app-search>
   </div>
-  <div class="admin-crud-page__list">
-    <div class="user-item__container" *ngFor="let user of users">
-      <app-user-edit [user]="user"></app-user-edit>
+    <div class="admin-tab__content">
+      <div class="admin-crud-page">
+        <div class="admin-crud-page__toolbar">
+          <app-btn text="Добавить" (click)="openModalToAddUser()"></app-btn>
+        </div>
+        <div class="admin-crud-page__list">
+        <div class="user-item__container" *ngFor="let user of (users | search: searchValue:'login')">
+          <app-user-edit [user]="user"></app-user-edit>
+        </div>
+      </div>
     </div>
   </div>
 </div>

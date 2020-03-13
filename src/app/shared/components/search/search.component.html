@@ -1,13 +1,15 @@
-<div class="search">
+<div class="search" (keydown.enter)="onSearchClick()">
   <div class="search__input-container">
     <app-input
       [placeholder]="'Поиск...'"
+      [(ngModel)]="searchTitle"
     ></app-input>
   </div>
   <div class="search__submit-container">
     <app-btn
       [type]="'text'"
       [text]="'Найти'"
+      (onClick)="onSearchClick()"
     ></app-btn>
   </div>
 </div>
