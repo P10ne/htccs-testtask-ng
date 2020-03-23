@@ -95,6 +95,9 @@ export class AuthInterceptor implements HttpInterceptor {
               this.authService.logout();
               this.modalService.open(LoginFormComponent, {});
             }
+            if (err.status === 403) {
+              console.log('Недостаточно прав доступа');
+            }
           }
         }
       )

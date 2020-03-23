@@ -33,7 +33,7 @@
 <ng-template #secondRef>
   <div class="main-section">
     <div class="main-section__content">
-      <div class="main-channels">
+      <div class="main-channels" [perfectScrollbar] style="max-height: calc(100vh - 200px)">
         <div class="main-channels__item" *ngFor="let channel of channels">
           <app-channel-item [channel]="channel"></app-channel-item>
         </div>

@@ -1,6 +1,17 @@
-<div class="comments-add">
-  <textarea class="comments-add__textarea" placeholder="Введите комментарий..."></textarea>
+<form class="comments-add" [formGroup]="formGroup" *ngIf="authService.isAuthorized; else notAuthorized">
+  <textarea
+    class="comments-add__textarea"
+    placeholder="Введите комментарий..."
+    formControlName="comment"
+  ></textarea>
   <span class="comments-add__submit">
-    <app-btn text="Опубликовать"></app-btn>
+    <app-btn
+      text="Опубликовать"
+      (onClick)="add()"
+      [wait]="requesting"
+      [disabled]="isSendBtnDisabled()"
+    ></app-btn>
   </span>
-</div>
+</form>
+
+<ng-template #notAuthorized><p>Авторизуйтесь, чтобы добавить комментарий</p></ng-template>

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {IMovie} from '../../../shared/interfaces/movie.interface';
 import {MoviesService} from '../../../shared/services/movies/movies.service';
 import {ModalService} from '../../../shared/services/modal/modal.service';
-import {MovieEditFormComponent} from '../../components/movie-edit-form/movie-edit-form.component';
+import {MovieEditFormComponent} from '../movie-edit-form/movie-edit-form.component';
 
 @Component({
   selector: 'app-movies',

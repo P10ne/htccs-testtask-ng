@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MoviesService} from '../../../shared/services/movies/movies.service';
 import {IMovie} from '../../../shared/interfaces/movie.interface';
+import {environment} from '../../../../environments/environment';
 
 @Component({
   selector: 'app-main',
@@ -11,22 +12,22 @@ export class MainComponent implements OnInit {
   genres = [
     {
       "title": "Комедии",
-      "imgSrc": "comedy-genre.png",
+      "imgSrc": `${environment.HOST}/images/comedy.png`,
       "clMod": "comedy"
     },
     {
       "title": "Драмы",
-      "imgSrc": "drama-genre.png",
+      "imgSrc": `${environment.HOST}/images/drama.png`,
       "clMod": "drama"
     },
     {
       "title": "Фантастика",
-      "imgSrc": "fantasy-genre.png",
+      "imgSrc": `${environment.HOST}/images/fantacy.png`,
       "clMod": "fantasy"
     },
     {
       "title": "Ужасы",
-      "imgSrc": "horror-genre.png",
+      "imgSrc": `${environment.HOST}/images/horror.png`,
       "clMod": "horror"
     }
   ];

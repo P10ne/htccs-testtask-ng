@@ -26,7 +26,7 @@ export class AuthService {
 
   private _accessToken: IAccessToken | null = null;
   fingerPrint: string | null = null;
-  user: BehaviorSubject<IUser> = new BehaviorSubject<IUser>(JSON.parse(localStorage.getItem('user')));
+  user: BehaviorSubject<IUser | null> = new BehaviorSubject<IUser>(JSON.parse(localStorage.getItem('user')));
   public get accessToken(): IAccessToken {
     return this._accessToken;
   }
@@ -46,6 +46,10 @@ export class AuthService {
 
   }
 
+  public get isAuthorized() {
+    return !!this.user.getValue();
+  }
+
   private setUser(user: IUser) {
     this.user.next(user);
     localStorage.setItem('user', JSON.stringify(user));
@@ -57,7 +61,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  login(data: IToLogin): Promise<IResponse> {
+  login(data: IToLogin): Promise<IResponse<ILoginResponse>> {
     return new Promise(async (resolve, reject) => {
       try {
         const loginReqResult = await this.http.post<IResponse<ILoginResponse>>(`${environment.HOST}/${this.dir}/login`, data).toPromise();
@@ -66,7 +70,7 @@ export class AuthService {
           this.refreshToken = loginReqResult.content.refreshToken;
 
           this.setUser(loginReqResult.content.user);
-          resolve();
+          resolve(loginReqResult);
         }
       } catch (e) {
         reject(e);

@@ -7,18 +7,26 @@
 
     &__content {
       display: flex;
+      flex-wrap: wrap;
+      @media (max-width: 469px) {
+        justify-content: center;
+      }
       &--wp {
         margin-left: -10px;
         margin-right: -10px;
       }
     }
     &__movie {
-      flex: 1 1 280px;
+      flex: 1 1;
       padding: 16px 10px;
+      min-width: 235px;
+      max-width: 350px;
     }
     &__genre {
-      flex: 1 1 280px;
+      flex: 1 1;
       padding: 16px 10px;
+      min-width: 235px;
+      max-width: 350px;
     }
   }
   &-title {
@@ -29,6 +37,9 @@
     width: 100%;
     &__item {
       padding-bottom: 16px;
+      &:nth-last-of-type(3) { /* perfectsrollbar добавляет в конец 2 блока для ползунка */
+        padding-bottom: 0;
+      }
     }
   }
 }

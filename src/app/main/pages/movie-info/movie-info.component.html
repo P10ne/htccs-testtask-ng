@@ -36,8 +36,11 @@
   </div>
   <div class="movie-info__comments-view">
 <!--component-->
-    <div class="movie-info__comment-item">
-      <app-comment></app-comment>
+    <div class="movie-info__comment-item" *ngFor="let comment of comments">
+      <app-comment
+        [comment]="comment"
+        (deleteEmitter)="onCommentDeleted($event)"
+      ></app-comment>
     </div>
 <!--    -->
   </div>

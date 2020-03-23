@@ -18,6 +18,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { PreloaderComponent } from './components/preloader/preloader.component';
 import { FileInputComponent } from './components/file-input/file-input.component';
 import {AuthInterceptor} from './services/auth-interceptor/auth-interceptor.service';
+import {AuthComponent} from './components/auth/auth.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -36,7 +37,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     SearchComponent,
     LoginFormComponent,
     PreloaderComponent,
-    FileInputComponent
+    FileInputComponent,
+    AuthComponent
   ],
   exports: [
     BtnComponent,
@@ -50,7 +52,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     LoginFormComponent,
     PerfectScrollbarModule,
     PreloaderComponent,
-    FileInputComponent
+    FileInputComponent,
+    AuthComponent
   ],
   entryComponents: [
     ModalComponent,

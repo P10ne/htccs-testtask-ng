@@ -7,6 +7,11 @@ import {IToLogin} from '../../interfaces/user.interface';
 import {ModalRef} from '../../classes/modal-ref';
 import {getFingerprint} from '../../utils/fingerPrint';
 
+export enum LoginResult {
+  SUCCESS,
+  FAILED
+};
+
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
@@ -14,6 +19,7 @@ import {getFingerprint} from '../../utils/fingerPrint';
 })
 export class LoginFormComponent implements OnInit {
 
+  validationMessage = validationMessage;
   private _requesting = false;
   set requesting(value) {
     this._requesting = value;
@@ -21,14 +27,13 @@ export class LoginFormComponent implements OnInit {
   get requesting() {
     return this._requesting;
   }
-  validationMessage = validationMessage;
   formGroup = new FormGroup({
     login: new FormControl(
       '',
-      []),
+      [Validators.required]),
     password: new FormControl(
       '',
-      []),
+      [Validators.required]),
     remember: new FormControl(
       false,
       [])
@@ -66,9 +71,15 @@ export class LoginFormComponent implements OnInit {
       password: this.password.value,
       fingerPrint: await getFingerprint()
     };
-    await this.authService.login(data);
-    this.requesting = false;
-    this.modal.close();
+    let loginRes = null;
+    try {
+      loginRes = await this.authService.login(data);
+      this.modal.close({status: LoginResult.SUCCESS, role: loginRes.content.user.role});
+    } catch (e) {
+      console.log(e);
+    } finally {
+      this.requesting = false;
+    }
   }
 
   // todo скрол формы не работает

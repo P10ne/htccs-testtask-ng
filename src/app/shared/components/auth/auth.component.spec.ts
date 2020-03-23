@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AuthComponent } from './auth.component';
+import {AuthService} from '../../services/auth/auth.service';
+import {HttpClient, HttpHandler} from '@angular/common/http';
+import {By} from '@angular/platform-browser';
+import {BtnComponent} from '../btn/btn.component';
 
 describe('AuthComponent', () => {
   let component: AuthComponent;
@@ -8,7 +12,8 @@ describe('AuthComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AuthComponent ]
+      declarations: [ AuthComponent, BtnComponent ],
+      providers: [AuthService, HttpClient, HttpHandler]
     })
     .compileComponents();
   }));
@@ -21,5 +26,11 @@ describe('AuthComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  it('should includes login btn', () => {
+    component.login = null;
+    let de = fixture.debugElement.query(By.css('app-btn'));
+    let el = de.nativeElement;
+    expect(el).toBeDefined();
   });
 });

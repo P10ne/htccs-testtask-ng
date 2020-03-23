@@ -1,4 +1,11 @@
 $main-color: #E5261E;
 $main-color-hover: #CC221B;
 
-$mobile: 600px;
+
+@custom-media --mobile-s only screen and (max-width: 320px);
+@custom-media --mobile-m only screen and (max-width: 375px);
+@custom-media --mobile-l only screen and (max-width: 425px);
+@custom-media --mobile-xl only screen and (max-width: 600px);
+@custom-media --tablet-s only screen and (max-width: 700px);
+@custom-media --tablet only screen and (max-width: 768px);
+@custom-media --laptop only screen and (max-width: 1024px);

@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {IUser} from '../../../shared/interfaces/user.interface';
 import {UsersService} from '../../../shared/services/users/users.service';
 import {ModalService} from '../../../shared/services/modal/modal.service';
-import {UserEditFormComponent} from '../../components/user-edit-form/user-edit-form.component';
+import {UserEditFormComponent} from '../user-edit-form/user-edit-form.component';
 
 @Component({
   selector: 'app-users',

@@ -5,7 +5,6 @@ import {MainComponent} from './pages/main/main.component';
 import {RouterModule} from '@angular/router';
 import {SharedModule} from '../shared/shared.module';
 import {HeaderComponent} from './components/header/header.component';
-import {AuthComponent} from './components/auth/auth.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {MovieItemComponent} from './components/movie-item/movie-item.component';
 import {MovieInfoComponent} from './pages/movie-info/movie-info.component';
@@ -13,7 +12,7 @@ import {GenreItemComponent} from './components/genre-item/genre-item.component';
 import {ChannelItemComponent} from './components/channel-item/channel-item.component';
 import {AddCommentComponent} from './components/add-comment/add-comment.component';
 import {CommentComponent} from './components/comment/comment.component';
-import {AdminModule} from '../admin/admin.module';
+import {ReactiveFormsModule} from '@angular/forms';
 
 const routes = [
   {path: '', component: MainLayoutComponent, children: [
@@ -28,7 +27,6 @@ const routes = [
     MainComponent,
     MainLayoutComponent,
     HeaderComponent,
-    AuthComponent,
     FooterComponent,
     MovieItemComponent,
     MovieInfoComponent,
@@ -40,7 +38,8 @@ const routes = [
   imports: [
     CommonModule,
     SharedModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ReactiveFormsModule
   ],
   exports: []
 })

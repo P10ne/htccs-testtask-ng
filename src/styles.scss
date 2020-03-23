@@ -1,7 +1,6 @@
 @import 'variables.scss';
-@import '~perfect-scrollbar/css/perfect-scrollbar.css';
 
-*[class] { /* Исключить влияние на структуру html описания фильма */
+body, *[class] { /* Исключить влияние на структуру html описания фильма */
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -72,3 +71,4 @@ a {
   }
 }
 
+@import '~perfect-scrollbar/css/perfect-scrollbar.css';
