@@ -8,19 +8,19 @@ import {IResponse} from '../../interfaces/response.interface';
   providedIn: 'root'
 })
 export class CommentsService {
-  dir = 'comments';
+  dir = '/comments';
 
   constructor(private http: HttpClient) { }
 
   add(comment: ICommentToAdd): Promise<IResponse> {
-    return this.http.post<IResponse>(`${environment.HOST}/${this.dir}`, {payload: comment}).toPromise();
+    return this.http.post<IResponse>(`${this.dir}`, {payload: comment}).toPromise();
   }
 
   get(movieId: number): Promise<IResponse> {
-    return this.http.get<IResponse>(`${environment.HOST}/${this.dir}?movieId=${movieId}`).toPromise();
+    return this.http.get<IResponse>(`${this.dir}?movieId=${movieId}`).toPromise();
   }
 
   remove(id: number): Promise<IResponse> {
-    return this.http.delete<IResponse>(`${environment.HOST}/${this.dir}/${id}`).toPromise();
+    return this.http.delete<IResponse>(`${this.dir}/${id}`).toPromise();
   }
 }

@@ -1,0 +1,9 @@
+{
+  "/api/": {
+    "target": "http://api.test.ru",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {"^/" : ""}
+  }
+}

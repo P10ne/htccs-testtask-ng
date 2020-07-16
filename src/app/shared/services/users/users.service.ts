@@ -9,27 +9,27 @@ import {HttpClient} from '@angular/common/http';
 })
 export class UsersService {
 
-  dir = 'users';
+  dir = '/users';
 
   constructor(private http: HttpClient) { }
 
   add(user: IUserToAdd): Promise<IResponse> {
-    return this.http.post<IResponse>(`${environment.HOST}/${this.dir}`, user).toPromise();
+    return this.http.post<IResponse>(`${this.dir}`, user).toPromise();
   }
 
   update(user: IUserToUpdate): Promise<IResponse> {
-    return this.http.put<IResponse>(`${environment.HOST}/${this.dir}/${user.id}`, user).toPromise();
+    return this.http.put<IResponse>(`${this.dir}/${user.id}`, user).toPromise();
   }
 
   getAll(): Promise<IResponse> {
-    return this.http.get<IResponse<IUser[]>>(`${environment.HOST}/${this.dir}`).toPromise();
+    return this.http.get<IResponse<IUser[]>>(`${this.dir}`).toPromise();
   }
 
   remove(id: number): Promise<IResponse> {
-    return this.http.delete<IResponse>(`${environment.HOST}/${this.dir}/${id}`).toPromise();
+    return this.http.delete<IResponse>(`${this.dir}/${id}`).toPromise();
   }
 
   isUserExist(login: string): Promise<IResponse> {
-    return this.http.get<IResponse>(`${environment.HOST}/${this.dir}?login=${login}`).toPromise();
+    return this.http.get<IResponse>(`${this.dir}?login=${login}`).toPromise();
   }
 }

@@ -89,8 +89,8 @@ export class MovieEditFormComponent implements OnInit {
     return this.formGroup.get(controlName).errors;
   }
 
-  isSaveBtnDisabled() {
-    return this.formGroup.invalid || this.formGroup.pending;
+  canSubmit() {
+    return !this.formGroup.invalid && !this.formGroup.pending && !this.saving;
   }
 
   constructor(
@@ -125,15 +125,17 @@ export class MovieEditFormComponent implements OnInit {
     this.modal.close('some value');
   }
 
-  async onSave() {
-    this.saving = true;
-    if (this.toUpdate) {
-      await this.update();
-    } else if (this.toAdd) {
-      await this.add();
+  async submit() {
+    if (this.canSubmit()) {
+      this.saving = true;
+      if (this.toUpdate) {
+        await this.update();
+      } else if (this.toAdd) {
+        await this.add();
+      }
+      this.saving = false;
+      this.modal.close();
     }
-    this.saving = false;
-    this.modal.close();
   }
 
   async add() {
@@ -160,7 +162,7 @@ export class MovieEditFormComponent implements OnInit {
         country: this.country.value,
         description: this.description.value,
         genre: this.genre.value,
-        preview: this.preview.value,
+        preview: this.preview.value[0],
         year: this.year.value
       });
       console.log(response);

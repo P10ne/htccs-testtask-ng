@@ -14,18 +14,18 @@ export class MoviesComponent implements OnInit {
   movies: IMovie[];
   searchValue = '';
 
+
   constructor(
     private moviesService: MoviesService,
     private modalService: ModalService
   ) { }
 
-  ngOnInit() {
-    this.initMovies();
+  async ngOnInit() {
+    await this.initMovies();
   }
 
   updateSearchValue(newValue: string): void {
     this.searchValue = newValue;
-    console.log(this.searchValue);
   }
 
   async initMovies() {

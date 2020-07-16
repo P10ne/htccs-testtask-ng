@@ -18,7 +18,6 @@ export class AuthInterceptor implements HttpInterceptor {
     private authService: AuthService,
     private modalService: ModalService
   ) {}
-  // async/await нельзя применить для intercept при обновлении токенов перед выполнением основного запроса
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
@@ -96,7 +95,11 @@ export class AuthInterceptor implements HttpInterceptor {
               this.modalService.open(LoginFormComponent, {});
             }
             if (err.status === 403) {
-              console.log('Недостаточно прав доступа');
+              if (err.error.message) {
+                console.log(err.message);
+              } else {
+                console.log('Недостаточно прав доступа');
+              }
             }
           }
         }

@@ -19,6 +19,7 @@ import { PreloaderComponent } from './components/preloader/preloader.component';
 import { FileInputComponent } from './components/file-input/file-input.component';
 import {AuthInterceptor} from './services/auth-interceptor/auth-interceptor.service';
 import {AuthComponent} from './components/auth/auth.component';
+import {RequestInterceptorService} from './services/request-interceptor/request-interceptor.service';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -74,6 +75,11 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RequestInterceptorService,
       multi: true
     }
   ]

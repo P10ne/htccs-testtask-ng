@@ -22,7 +22,7 @@ export interface IAccessToken {
   providedIn: 'root'
 })
 export class AuthService {
-  dir = 'auth';
+  dir = '/auth';
 
   private _accessToken: IAccessToken | null = null;
   fingerPrint: string | null = null;
@@ -64,7 +64,7 @@ export class AuthService {
   login(data: IToLogin): Promise<IResponse<ILoginResponse>> {
     return new Promise(async (resolve, reject) => {
       try {
-        const loginReqResult = await this.http.post<IResponse<ILoginResponse>>(`${environment.HOST}/${this.dir}/login`, data).toPromise();
+        const loginReqResult = await this.http.post<IResponse<ILoginResponse>>(`${this.dir}/login`, data).toPromise();
         if (loginReqResult.status === 200) {
           this.accessToken = loginReqResult.content.accessToken;
           this.refreshToken = loginReqResult.content.refreshToken;
@@ -79,11 +79,11 @@ export class AuthService {
   }
 
   refresh(data: IRefreshTokens): Promise<IResponse<IRefreshResponse>> {
-      return this.http.post<IResponse>(`${environment.HOST}/${this.dir}/refresh`, data).toPromise();
+      return this.http.post<IResponse>(`${this.dir}/refresh`, data).toPromise();
   }
 
   async logout(): Promise<IResponse> {
-    const logoutRequestRes = await this.http.post<IResponse>(`${environment.HOST}/${this.dir}/logout`, null).toPromise();
+    const logoutRequestRes = await this.http.post<IResponse>(`${this.dir}/logout`, null).toPromise();
     this.accessToken = null;
     this.refreshToken = null;
     this.clearUser();

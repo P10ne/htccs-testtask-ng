@@ -56,8 +56,8 @@ export class UserEditFormComponent implements OnInit {
     return this.formGroup.get(controlName).errors;
   }
 
-  isSaveBtnDisabled() {
-    return this.formGroup.invalid || this.formGroup.pending || this.saving;
+  canSubmit() {
+    return !this.formGroup.invalid && !this.formGroup.pending && !this.saving;
   }
 
   constructor(
@@ -104,14 +104,16 @@ export class UserEditFormComponent implements OnInit {
     this.modal.close('user edit closed result');
   }
 
-  async onSave() {
-    this.setSaving(true);
-    if (this.toUpdate) {
-      await this.update();
-    } else if (this.toAdd) {
-      await this.add();
+  async submit() {
+    if (this.canSubmit()) {
+      this.setSaving(true);
+      if (this.toUpdate) {
+        await this.update();
+      } else if (this.toAdd) {
+        await this.add();
+      }
+      this.setSaving(false);
     }
-    this.setSaving(false);
   }
 
   async add() {

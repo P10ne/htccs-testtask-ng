@@ -1,80 +1,90 @@
-<div class="movie-edit-form">
-  <form class="form__scroll" novalidate [formGroup]="formGroup" [perfectScrollbar]>
-    <div class="form__group">
-      <label for="title" class="form__label">Название</label>
-      <div class="form__input">
-        <app-input
-          id="title"
-          formControlName="title"
-        ></app-input>
-      </div>
-      <div class="form__errors" *ngIf="isInvalidControl('title')">
-        <span class="form__error" *ngIf="getErrorsControl('title').required">{{validationMessage.required}}</span>
-      </div>
+<form class="form__scroll" novalidate [formGroup]="formGroup" [perfectScrollbar] (keydown.enter)="submit()">
+  <div class="form__group">
+    <label for="title" class="form__label">Название</label>
+    <div class="form__input">
+      <app-input
+        id="title"
+        formControlName="title"
+      ></app-input>
+    </div>
+    <div class="form__errors" *ngIf="isInvalidControl('title')">
+      <span class="form__error" *ngIf="getErrorsControl('title').required">{{validationMessage.required}}</span>
+    </div>
 
-    </div>
-    <div class="form__group">
-      <label class="form__label">Год</label>
-      <div class="form__input">
-        <app-input
-          formControlName="year"
-        ></app-input>
-      </div>
-      <div class="form__errors" *ngIf="isInvalidControl('year')">
-        <span class="form__error" *ngIf="getErrorsControl('year').required">{{validationMessage.required}}</span>
-      </div>
-
-    </div>
-    <div class="form__group">
-      <label class="form__label">Страна</label>
-      <div class="form__input">
-        <app-input
-          formControlName="country"
-        ></app-input>
-      </div>
-      <div class="form__errors" *ngIf="isInvalidControl('country')">
-        <span class="form__error" *ngIf="getErrorsControl('country').required">{{validationMessage.required}}</span>
-      </div>
-    </div>
-    <div class="form__group">
-      <label class="form__label">Жанр</label>
-      <div class="form__input">
-        <app-input
-          formControlName="genre"
-        ></app-input>
-      </div>
-      <div class="form__errors" *ngIf="isInvalidControl('genre')">
-        <span class="form__error" *ngIf="getErrorsControl('genre').required">{{validationMessage.required}}</span>
-      </div>
-    </div>
-    <div class="form__group">
-      <label class="form__label">Изображение</label>
-      <div class="form__input">
-        <app-file-input
-          formControlName="preview"
-          accept="image/jpeg,image/png"
-        ></app-file-input>
-      </div>
-      <div class="form__errors" *ngIf="isInvalidControl('preview')">
-        <span class="form__error" *ngIf="getErrorsControl('preview').required">{{validationMessage.custom('Загрузите изображение')}}</span>
-        <span class="form__error" *ngIf="getErrorsControl('preview').maxSize">{{validationMessage.custom('Размер изображения не должен превышать N Мб')}}</span>
-      </div>
-    </div>
-    <div class="form__group">
-      <label class="form__label">Описание</label>
-      <div class="form__input">
-        <ckeditor
-          [editor]="Editor"
-          formControlName="description"
-        ></ckeditor>
-      </div>
-      <div class="form__errors" *ngIf="isInvalidControl('description')">
-        <span class="form__error" *ngIf="getErrorsControl('description').required">{{validationMessage.required}}</span>
-      </div>
-    </div>
-  </form>
-  <div class="modal__controls">
-    <app-btn class="modal__control modal__control--submit" text="Сохранить" (onClick)="onSave()" [wait]="saving" [disabled]="isSaveBtnDisabled()"></app-btn>
-    <app-btn class="modal__control modal__control--cancel" [type]="'text'" text="Отмена" (onClick)="onClose()" [disabled]="saving"></app-btn>
   </div>
+  <div class="form__group">
+    <label class="form__label">Год</label>
+    <div class="form__input">
+      <app-input
+        formControlName="year"
+      ></app-input>
+    </div>
+    <div class="form__errors" *ngIf="isInvalidControl('year')">
+      <span class="form__error" *ngIf="getErrorsControl('year').required">{{validationMessage.required}}</span>
+    </div>
+
+  </div>
+  <div class="form__group">
+    <label class="form__label">Страна</label>
+    <div class="form__input">
+      <app-input
+        formControlName="country"
+      ></app-input>
+    </div>
+    <div class="form__errors" *ngIf="isInvalidControl('country')">
+      <span class="form__error" *ngIf="getErrorsControl('country').required">{{validationMessage.required}}</span>
+    </div>
+  </div>
+  <div class="form__group">
+    <label class="form__label">Жанр</label>
+    <div class="form__input">
+      <app-input
+        formControlName="genre"
+      ></app-input>
+    </div>
+    <div class="form__errors" *ngIf="isInvalidControl('genre')">
+      <span class="form__error" *ngIf="getErrorsControl('genre').required">{{validationMessage.required}}</span>
+    </div>
+  </div>
+  <div class="form__group">
+    <label class="form__label">Изображение</label>
+    <div class="form__input">
+      <app-file-input
+        formControlName="preview"
+        accept="image/jpeg,image/png"
+      ></app-file-input>
+    </div>
+    <div class="form__errors" *ngIf="isInvalidControl('preview')">
+      <span class="form__error" *ngIf="getErrorsControl('preview').required">{{validationMessage.custom('Загрузите изображение')}}</span>
+      <span class="form__error" *ngIf="getErrorsControl('preview').maxSize">{{validationMessage.custom('Размер изображения не должен превышать N Мб')}}</span>
+    </div>
+  </div>
+  <div class="form__group">
+    <label class="form__label">Описание</label>
+    <div class="form__input">
+      <ckeditor
+        [editor]="Editor"
+        formControlName="description"
+      ></ckeditor>
+    </div>
+    <div class="form__errors" *ngIf="isInvalidControl('description')">
+      <span class="form__error" *ngIf="getErrorsControl('description').required">{{validationMessage.required}}</span>
+    </div>
+  </div>
+</form>
+<div class="modal__controls">
+  <app-btn
+    class="modal__control modal__control--submit"
+    text="Сохранить"
+    (onClick)="submit()"
+    [wait]="saving"
+    [disabled]="!canSubmit()">
+  </app-btn>
+  <app-btn
+    class="modal__control modal__control--cancel"
+    [type]="'text'"
+    text="Отмена"
+    (onClick)="onClose()"
+    [disabled]="saving">
+  </app-btn>
 </div>

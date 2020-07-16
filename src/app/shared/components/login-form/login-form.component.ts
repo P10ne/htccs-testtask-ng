@@ -52,12 +52,13 @@ export class LoginFormComponent implements OnInit {
     return this.formGroup.get(controlName).errors;
   }
 
-  isAuthBtnDisabled() {
-    return this.formGroup.invalid || this.formGroup.pending;
+  canSubmit() {
+    return !this.formGroup.invalid && !this.formGroup.pending;
   }
 
+
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     private modal: ModalRef
   ) { }
 
@@ -65,21 +66,24 @@ export class LoginFormComponent implements OnInit {
   }
 
   async submit() {
-    this.requesting = true;
-    const data: IToLogin = {
-      login: this.login.value,
-      password: this.password.value,
-      fingerPrint: await getFingerprint()
-    };
-    let loginRes = null;
-    try {
-      loginRes = await this.authService.login(data);
-      this.modal.close({status: LoginResult.SUCCESS, role: loginRes.content.user.role});
-    } catch (e) {
-      console.log(e);
-    } finally {
-      this.requesting = false;
+    if (this.canSubmit()) {
+      this.requesting = true;
+      const data: IToLogin = {
+        login: this.login.value,
+        password: this.password.value,
+        fingerPrint: await getFingerprint()
+      };
+      let loginRes = null;
+      try {
+        loginRes = await this.authService.login(data);
+        this.modal.close({status: LoginResult.SUCCESS, role: loginRes.content.user.role});
+      } catch (e) {
+        console.log(e);
+      } finally {
+        this.requesting = false;
+      }
     }
+
   }
 
   // todo скрол формы не работает

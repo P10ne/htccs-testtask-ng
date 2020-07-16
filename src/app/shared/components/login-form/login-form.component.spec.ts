@@ -96,7 +96,7 @@ describe('LoginFormComponent', () => {
       component.formGroup.get('login').setValue('some login');
       component.formGroup.get('password').setValue('some password');
       fixture.detectChanges();
-      expect(component.isAuthBtnDisabled()).toBeFalsy();
+      expect(component.canSubmit()).toBeFalsy();
     });
   });
   describe('Авторизация', () => {
@@ -108,6 +108,7 @@ describe('LoginFormComponent', () => {
   });
   it('Корректно передает данные в аргументы сервиса', () => {
     spyOn(component.authService, 'login');
+    console.log(component.formGroup.get('login').value);
     authBtn.click();
     expect(component.authService.login).toHaveBeenCalledWith({login: 'some login', password: 'some password', fingerPrint: 'asdf'});
   });
